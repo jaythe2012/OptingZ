@@ -157,9 +157,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="DAL\OptingzDbContext.cs" />
+    <Compile Include="DAL\OptingZDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryMaster.cs" />
+    <Compile Include="Models\CityMaster.cs" />
+    <Compile Include="Models\CountryMaster.cs" />
+    <Compile Include="Models\GeoMaster.cs" />
+    <Compile Include="Models\ProductCategoryMaster.cs" />
+    <Compile Include="Models\ProductDescriptionMaster.cs" />
+    <Compile Include="Models\ProductLocationMaster.cs" />
+    <Compile Include="Models\ProductMaster.cs" />
+    <Compile Include="Models\ProductStickerMaster.cs" />
+    <Compile Include="Models\StateMaster.cs" />
+    <Compile Include="Models\StickerMaster.cs" />
+    <Compile Include="Models\SubCategoryMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,10 +217,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\Alternative.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
