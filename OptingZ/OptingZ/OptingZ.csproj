@@ -160,6 +160,8 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DAL\OptingzDbContext.cs" />
     <Compile Include="DAL\OptingZDbInitializer.cs" />
+    <Compile Include="DAL\Repository\ProductRepository.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +178,7 @@
     <Compile Include="Models\StickerMaster.cs" />
     <Compile Include="Models\SubCategoryMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DAL\Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

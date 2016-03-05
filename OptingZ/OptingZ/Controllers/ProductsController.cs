@@ -13,29 +13,38 @@ namespace OptingZ.Controllers
 {
     public class ProductsController : Controller
     {
-        private OptingzDbContext db = new OptingzDbContext();
+        private UnitOfWork uow = new UnitOfWork();
 
         // GET: Products
         public ActionResult Index()
         {
-
-            List<ProductMaster> Products = db.ProductMasters.ToList();
-            return View(db.ProductMasters.ToList());
+            IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
+            return View(Products);
         }
 
         [HttpGet]
         //Get : Products/Alternative
         public ActionResult Alternative(string pName)
         {
-            //var product = db.ProductMasters.Where(p => p.Name == pName);
 
-            //ProductMaster pr = db.ProductMasters.Find(pName);
+            IEnumerable<ProductMaster> SelectedProduct = uow.ProductRepository.Get(
+                filter: d => d.Name == pName,
+                includeProperties: "ProductCategorises"
+               );
 
-            
-            //ProductMaster products = (ProductMaster)db.ProductMasters.Where(p => p.Name == product);
 
-            List<ProductMaster> Products = db.ProductMasters.ToList();
-            return View(db.ProductMasters.ToList());
+            ProductMaster prod = uow.ProductRepository.Get(
+                filter: d => d.Name == pName,
+                includeProperties: "ProductCategorises"
+               ).First();
+            //IEnumerable<ProductMaster> AlternativeProducts -uow.ProductRepository.Get(
+            //    filter: f => f.
+            //    );
+
+            IEnumerable<ProductCategoryMaster> pcm = prod.ProductCategorises;
+            IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
+
+            return View(Products);
         }
 
         // GET: Products/Details/5
@@ -45,7 +54,7 @@ namespace OptingZ.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductMaster Product = db.ProductMasters.Find(id);
+            ProductMaster Product = uow.ProductRepository.GetByID(id);
             if (Product == null)
             {
                 return HttpNotFound();
@@ -68,11 +77,10 @@ namespace OptingZ.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ProductMasters.Add(Product);
-                db.SaveChanges();
+                uow.ProductRepository.Add(Product);
+                uow.Save();
                 return RedirectToAction("Index");
             }
-
             return View(Product);
         }
 
@@ -84,7 +92,7 @@ namespace OptingZ.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductMaster Product = db.ProductMasters.Find(id);
+            ProductMaster Product = uow.ProductRepository.GetByID(id);
             if (Product == null)
             {
                 return HttpNotFound();
@@ -101,8 +109,8 @@ namespace OptingZ.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Product).State = EntityState.Modified;
-                db.SaveChanges();
+                uow.ProductRepository.Update(Product);
+                uow.Save();
                 return RedirectToAction("Index");
             }
             return View(Product);
@@ -115,7 +123,7 @@ namespace OptingZ.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductMaster Product = db.ProductMasters.Find(id);
+            ProductMaster Product = uow.ProductRepository.GetByID(id);
             if (Product == null)
             {
                 return HttpNotFound();
@@ -128,9 +136,9 @@ namespace OptingZ.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProductMaster Product = db.ProductMasters.Find(id);
-            db.ProductMasters.Remove(Product);
-            db.SaveChanges();
+            ProductMaster Product = uow.ProductRepository.GetByID(id);
+            uow.ProductRepository.Delete(Product);
+            uow.Save();
             return RedirectToAction("Index");
         }
 
@@ -138,7 +146,7 @@ namespace OptingZ.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                uow.Dispose();
             }
             base.Dispose(disposing);
         }
