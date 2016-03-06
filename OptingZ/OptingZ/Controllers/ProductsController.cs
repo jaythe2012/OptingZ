@@ -26,24 +26,53 @@ namespace OptingZ.Controllers
         //Get : Products/Alternative
         public ActionResult Alternative(string pName)
         {
-
-            IEnumerable<ProductMaster> SelectedProduct = uow.ProductRepository.Get(
-                filter: d => d.Name == pName,
-                includeProperties: "ProductCategorises"
-               );
-
-
             ProductMaster prod = uow.ProductRepository.Get(
                 filter: d => d.Name == pName,
                 includeProperties: "ProductCategorises"
                ).First();
-            //IEnumerable<ProductMaster> AlternativeProducts -uow.ProductRepository.Get(
-            //    filter: f => f.
-            //    );
+            IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
+            List<int> ProductIDs = new List<int>();
+            foreach (ProductCategoryMaster pcm in pcms)
+            {
+                List<int> products = uow.ProductCategoryRepository.GetProductsByCategoryID(
+                    pcm.CategoryMasterID
+                    );
+                ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
+            }
+            List<ProductMaster> Products = new List<ProductMaster>();
+            foreach(int id in ProductIDs)
+            {
+                if(id != prod.ID)
+                    Products.Add(uow.ProductRepository.GetByID(id));
+            }
+            return View(Products);
+        }
 
-            IEnumerable<ProductCategoryMaster> pcm = prod.ProductCategorises;
-            IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
+        [HttpGet]
+        //Get : Products/OtherAlternative
+        public ActionResult OtherAlternative(string pName)
+        {
+            IEnumerable<int> categoryIds = uow.ProductRepository.Get(
+                filter: d => d.Name == pName,
+                includeProperties: "ProductCategorises"
+               ).First().ProductCategorises.Select(p => p.CategoryMasterID);
 
+            //IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
+            List<int> ProductIDs = new List<int>();
+            foreach (int id in categoryIds)
+            {
+                List<int> products = uow.ProductCategoryRepository.GetProductsByCategoryID(
+                    id
+                    );
+                ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
+            }
+            List<ProductMaster> Products = new List<ProductMaster>();
+
+            foreach (int id in ProductIDs)
+            {
+               // if (id != prod.ID)
+                 Products.Add(uow.ProductRepository.GetByID(id));
+            }
             return View(Products);
         }
 

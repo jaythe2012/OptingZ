@@ -160,6 +160,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DAL\OptingzDbContext.cs" />
     <Compile Include="DAL\OptingZDbInitializer.cs" />
+    <Compile Include="DAL\Repository\ProductCategoryRepository.cs" />
     <Compile Include="DAL\Repository\ProductRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +227,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\Alternative.cshtml" />
+    <Content Include="Views\Products\OtherAlternative.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

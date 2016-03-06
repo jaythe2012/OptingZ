@@ -43,7 +43,9 @@ namespace OptingZ.DAL
             {
                 new ProductMaster {Name = "WalMart" , SDescription = "Nice Mall" , Website = "www.walmart.ca",IsMultipleCategory = true},
                 new ProductMaster {Name = "Maxi & Cie", SDescription = "Very Nice Mall" , Website = "www.maxi.com", IsMultipleCategory= false },
-                new ProductMaster {Name = "Amazon", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false }
+                new ProductMaster {Name = "Amazon", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false },
+                new ProductMaster {Name = "Ebay" , SDescription = "Online cheap Mall" , Website = "www.ebay.ca",IsMultipleCategory = false},
+                new ProductMaster {Name = "IGA" , SDescription = "Expensive Mall" , Website = "www.IGA.ca",IsMultipleCategory = false}
             };
             products.ForEach(p => context.ProductMasters.Add(p));
             context.SaveChanges();
@@ -62,9 +64,12 @@ namespace OptingZ.DAL
             var productcategories = new List<ProductCategoryMaster>
             {
                 new ProductCategoryMaster {ProductMasterID = 1, CategoryMasterID = 1 , SubCategoryMasterID =1, },
-                new ProductCategoryMaster {ProductMasterID = 1, CategoryMasterID = 2, SubCategoryMasterID =1 },
                 new ProductCategoryMaster {ProductMasterID = 2, CategoryMasterID = 1, SubCategoryMasterID = 2 },
-                new ProductCategoryMaster { ProductMasterID = 3, CategoryMasterID = 2, SubCategoryMasterID = 3 }
+                new ProductCategoryMaster { ProductMasterID = 3, CategoryMasterID = 2, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 4, CategoryMasterID = 2, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 5, CategoryMasterID = 1, SubCategoryMasterID = 2 }
+
+
             };
 
             productcategories.ForEach(p => context.ProductCategoryMasters.Add(p));

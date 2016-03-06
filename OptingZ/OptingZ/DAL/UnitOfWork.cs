@@ -9,6 +9,7 @@ namespace OptingZ.DAL
     {
         private OptingzDbContext context = new OptingzDbContext();
         private ProductRepository productRepository;
+        private ProductCategoryRepository productCategoryRepository;
 
 
         #region Repos
@@ -22,6 +23,18 @@ namespace OptingZ.DAL
                     this.productRepository = new ProductRepository(context);
                 }
                 return productRepository;
+            }
+        }
+
+        public ProductCategoryRepository ProductCategoryRepository
+        {
+            get
+            {
+                if (this.productCategoryRepository == null)
+                {
+                    this.productCategoryRepository = new ProductCategoryRepository(context);
+                }
+                return productCategoryRepository;
             }
         }
 
