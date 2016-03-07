@@ -13,8 +13,10 @@ namespace OptingZ.DAL
         {
             var categories = new List<CategoryMaster>
             {
-                new CategoryMaster {Name = "Store" },
-                new CategoryMaster { Name = "Online" }
+                new CategoryMaster { Name = "Websites" },
+                new CategoryMaster { Name = "Softwares" },
+                new CategoryMaster {Name = "Stores" },
+                new CategoryMaster { Name = "Brands" }
             };
 
             categories.ForEach(c => context.CategoryMasters.Add(c));
@@ -22,9 +24,26 @@ namespace OptingZ.DAL
 
             var subcategories = new List<SubCategoryMaster>
             {
-                new SubCategoryMaster {Name= "Super Mall", CategoryMasterID=1 },
-                new SubCategoryMaster {Name = "Mini Mall", CategoryMasterID = 1 },
-                new SubCategoryMaster {Name = "Virtual Mall", CategoryMasterID = 2 }
+                new SubCategoryMaster {Name= "Social Networking", CategoryMasterID= 1 },
+                new SubCategoryMaster {Name = "E-Commerce", CategoryMasterID = 1 },
+                new SubCategoryMaster {Name= "Financial/Banks", CategoryMasterID= 1 },
+                new SubCategoryMaster {Name = "Job Hunting", CategoryMasterID = 1 },
+                new SubCategoryMaster {Name= "Video Streaming", CategoryMasterID= 1 },
+                
+                new SubCategoryMaster {Name = "Security Software", CategoryMasterID = 2 },               
+                new SubCategoryMaster {Name = "Productivity Tools", CategoryMasterID = 2 },
+                new SubCategoryMaster {Name = "Developement Tools", CategoryMasterID = 2 },
+                new SubCategoryMaster {Name = "Communication Tools", CategoryMasterID = 2 },
+                new SubCategoryMaster {Name = "Games", CategoryMasterID = 2 },
+                
+                new SubCategoryMaster {Name = "Super Market", CategoryMasterID = 3 },
+                new SubCategoryMaster {Name = "Grocery Stores", CategoryMasterID = 3 },
+                new SubCategoryMaster {Name = "Convenient Stores", CategoryMasterID = 3 },
+                new SubCategoryMaster {Name = "Pharmacies", CategoryMasterID = 3 },
+
+                new SubCategoryMaster {Name = "Clothes", CategoryMasterID = 4 },               
+                new SubCategoryMaster {Name = "Electronics", CategoryMasterID = 4 },
+                new SubCategoryMaster {Name = "Health Care", CategoryMasterID = 4 }
             };
 
             subcategories.ForEach(s => context.SubCategoryMasters.Add(s));
@@ -75,7 +94,7 @@ namespace OptingZ.DAL
             productcategories.ForEach(p => context.ProductCategoryMasters.Add(p));
             context.SaveChanges();
             base.Seed(context);
-            
+
         }
     }
 }
