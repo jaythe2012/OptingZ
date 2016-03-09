@@ -10,6 +10,11 @@ namespace OptingZ.DAL
 {
     public class OptingzDbContext : DbContext
     {
+        public OptingzDbContext() : base("OptingzDbContext")
+        {
+            Database.SetInitializer<OptingzDbContext>(new OptingZDbInitializer());
+        }
+
 
         public DbSet<ProductMaster> ProductMasters { get; set; }
         public DbSet<CategoryMaster> CategoryMasters { get; set; }

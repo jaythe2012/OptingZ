@@ -13,11 +13,11 @@ namespace OptingZ.DAL
 
         }
 
-        public List<int> GetProductsByCategoryID(int categoryID)
+        public List<int> GetProductsBySubCategoryID(int subcategoryID)
         {
             List<int> productIDs = new List<int>() ;
 
-            IEnumerable<ProductCategoryMaster> cm = context.ProductCategoryMasters.Where(p => p.CategoryMasterID == categoryID);
+            IEnumerable<ProductCategoryMaster> cm = context.ProductCategoryMasters.Where(p => p.SubCategoryMasterID == subcategoryID);
 
             foreach(ProductCategoryMaster cms in cm)
             {

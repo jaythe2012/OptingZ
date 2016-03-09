@@ -26,6 +26,8 @@ namespace OptingZ.Controllers
         //Get : Products/Alternative
         public ActionResult Alternative(string pName)
         {
+
+            pName = WebUtility.UrlDecode(pName);
             ProductMaster prod = uow.ProductRepository.Get(
                 filter: d => d.Name == pName,
                 includeProperties: "ProductCategorises"
@@ -34,8 +36,8 @@ namespace OptingZ.Controllers
             List<int> ProductIDs = new List<int>();
             foreach (ProductCategoryMaster pcm in pcms)
             {
-                List<int> products = uow.ProductCategoryRepository.GetProductsByCategoryID(
-                    pcm.CategoryMasterID
+                List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
+                    pcm.SubCategoryMasterID
                     );
                 ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
             }
@@ -61,7 +63,7 @@ namespace OptingZ.Controllers
             List<int> ProductIDs = new List<int>();
             foreach (int id in categoryIds)
             {
-                List<int> products = uow.ProductCategoryRepository.GetProductsByCategoryID(
+                List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
                     id
                     );
                 ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
