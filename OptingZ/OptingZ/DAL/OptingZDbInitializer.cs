@@ -141,11 +141,11 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Job Bank" , SDescription = "" , Website = "www.jobbank.gc.ca/",IsMultipleCategory = false},
 
                 //Products for "Video Streaming" sub category
-                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "YouTube" , SDescription = "" , Website = "https://www.youtube.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Netflix" , SDescription = "" , Website = "http://www.netflix.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Hulu" , SDescription = "" , Website = "http://www.hulu.com/welcome",IsMultipleCategory = false},
+                new ProductMaster {Name = "Dailmotion" , SDescription = "" , Website = "http://www.dailymotion.com/ca-en",IsMultipleCategory = false},
+                new ProductMaster {Name = "Vevo" , SDescription = "" , Website = "http://www.vevo.com/",IsMultipleCategory = false},
 
                 //Products for "Secutiry Software" sub category
                 new ProductMaster {Name = "Avira" , SDescription = "" , Website = "https://www.avira.com/",IsMultipleCategory = false},
@@ -246,7 +246,67 @@ namespace OptingZ.DAL
                 new ProductCategoryMaster { ProductMasterID = 34, CategoryMasterID = 4, SubCategoryMasterID = 17 },
                 new ProductCategoryMaster { ProductMasterID = 35, CategoryMasterID = 4, SubCategoryMasterID = 17 },
                 new ProductCategoryMaster { ProductMasterID = 36, CategoryMasterID = 4, SubCategoryMasterID = 17 },
-                new ProductCategoryMaster { ProductMasterID = 37, CategoryMasterID = 4, SubCategoryMasterID = 17 }
+                new ProductCategoryMaster { ProductMasterID = 37, CategoryMasterID = 4, SubCategoryMasterID = 17 },
+
+                new ProductCategoryMaster { ProductMasterID = 38, CategoryMasterID = 1, SubCategoryMasterID = 1 },
+                new ProductCategoryMaster { ProductMasterID = 39, CategoryMasterID = 1, SubCategoryMasterID = 1 },
+                new ProductCategoryMaster { ProductMasterID = 40, CategoryMasterID = 1, SubCategoryMasterID = 1 },
+                new ProductCategoryMaster { ProductMasterID = 41, CategoryMasterID = 1, SubCategoryMasterID = 1 },
+                new ProductCategoryMaster { ProductMasterID = 42, CategoryMasterID = 1, SubCategoryMasterID = 1 },
+
+                new ProductCategoryMaster { ProductMasterID = 43, CategoryMasterID = 1, SubCategoryMasterID = 2 },
+                new ProductCategoryMaster { ProductMasterID = 44, CategoryMasterID = 1, SubCategoryMasterID = 2 },
+                new ProductCategoryMaster { ProductMasterID = 45, CategoryMasterID = 1, SubCategoryMasterID = 2 },
+                new ProductCategoryMaster { ProductMasterID = 46, CategoryMasterID = 1, SubCategoryMasterID = 2 },
+
+                new ProductCategoryMaster { ProductMasterID = 47, CategoryMasterID = 1, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 48, CategoryMasterID = 1, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 49, CategoryMasterID = 1, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 50, CategoryMasterID = 1, SubCategoryMasterID = 3 },
+                new ProductCategoryMaster { ProductMasterID = 51, CategoryMasterID = 1, SubCategoryMasterID = 3 },
+
+                new ProductCategoryMaster { ProductMasterID = 52, CategoryMasterID = 1, SubCategoryMasterID = 4 },
+                new ProductCategoryMaster { ProductMasterID = 53, CategoryMasterID = 1, SubCategoryMasterID = 4 },
+                new ProductCategoryMaster { ProductMasterID = 54, CategoryMasterID = 1, SubCategoryMasterID = 4 },
+                new ProductCategoryMaster { ProductMasterID = 55, CategoryMasterID = 1, SubCategoryMasterID = 4 },
+                new ProductCategoryMaster { ProductMasterID = 56, CategoryMasterID = 1, SubCategoryMasterID = 4 },
+
+                new ProductCategoryMaster { ProductMasterID = 57, CategoryMasterID = 1, SubCategoryMasterID = 5 },
+                new ProductCategoryMaster { ProductMasterID = 58, CategoryMasterID = 1, SubCategoryMasterID = 5 },
+                new ProductCategoryMaster { ProductMasterID = 59, CategoryMasterID = 1, SubCategoryMasterID = 5 },
+                new ProductCategoryMaster { ProductMasterID = 60, CategoryMasterID = 1, SubCategoryMasterID = 5 },
+                new ProductCategoryMaster { ProductMasterID = 61, CategoryMasterID = 1, SubCategoryMasterID = 5 },
+                
+				new ProductCategoryMaster { ProductMasterID = 62, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+				new ProductCategoryMaster { ProductMasterID = 63, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+				new ProductCategoryMaster { ProductMasterID = 64, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+				new ProductCategoryMaster { ProductMasterID = 65, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+				new ProductCategoryMaster { ProductMasterID = 66, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+
+                new ProductCategoryMaster { ProductMasterID = 67, CategoryMasterID = 2, SubCategoryMasterID = 7 },
+                new ProductCategoryMaster { ProductMasterID = 68, CategoryMasterID = 2, SubCategoryMasterID = 7 },
+                new ProductCategoryMaster { ProductMasterID = 69, CategoryMasterID = 2, SubCategoryMasterID = 7 },
+                new ProductCategoryMaster { ProductMasterID = 70, CategoryMasterID = 2, SubCategoryMasterID = 7 },
+                new ProductCategoryMaster { ProductMasterID = 71, CategoryMasterID = 2, SubCategoryMasterID = 7 },
+
+                new ProductCategoryMaster { ProductMasterID = 72, CategoryMasterID = 2, SubCategoryMasterID = 8 },
+                new ProductCategoryMaster { ProductMasterID = 73, CategoryMasterID = 2, SubCategoryMasterID = 8 },
+                new ProductCategoryMaster { ProductMasterID = 74, CategoryMasterID = 2, SubCategoryMasterID = 8 },
+                new ProductCategoryMaster { ProductMasterID = 75, CategoryMasterID = 2, SubCategoryMasterID = 8 },
+                new ProductCategoryMaster { ProductMasterID = 76, CategoryMasterID = 2, SubCategoryMasterID = 8 },
+
+                new ProductCategoryMaster { ProductMasterID = 77, CategoryMasterID = 2, SubCategoryMasterID = 9 },
+                new ProductCategoryMaster { ProductMasterID = 78, CategoryMasterID = 2, SubCategoryMasterID = 9 },
+                new ProductCategoryMaster { ProductMasterID = 79, CategoryMasterID = 2, SubCategoryMasterID = 9 },
+                new ProductCategoryMaster { ProductMasterID = 80, CategoryMasterID = 2, SubCategoryMasterID = 9 },
+                new ProductCategoryMaster { ProductMasterID = 81, CategoryMasterID = 2, SubCategoryMasterID = 9 },
+
+                new ProductCategoryMaster { ProductMasterID = 82, CategoryMasterID = 2, SubCategoryMasterID = 10 },
+                new ProductCategoryMaster { ProductMasterID = 83, CategoryMasterID = 2, SubCategoryMasterID = 10 },
+                new ProductCategoryMaster { ProductMasterID = 84, CategoryMasterID = 2, SubCategoryMasterID = 10 },
+                new ProductCategoryMaster { ProductMasterID = 85, CategoryMasterID = 2, SubCategoryMasterID = 10 },
+                new ProductCategoryMaster { ProductMasterID = 86, CategoryMasterID = 2, SubCategoryMasterID = 10 }
+
             };
 
             productcategories.ForEach(p => context.ProductCategoryMasters.Add(p));
