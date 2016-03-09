@@ -69,8 +69,8 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Metro" , SDescription = "" , Website = "",IsMultipleCategory = false},
                 
                 //Products for Website Category.
-                new ProductMaster {Name = "Amazon", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false },
-                new ProductMaster {Name = "Ebay" , SDescription = "Online cheap Mall" , Website = "www.ebay.ca",IsMultipleCategory = false},
+                new ProductMaster {Name = "Amazon US", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false },
+                new ProductMaster {Name = "Ebay China" , SDescription = "Online cheap Mall" , Website = "www.ebay.ca",IsMultipleCategory = false},
 
                 //Products for "Grocessary store" sub category
                 new ProductMaster {Name = "Almizan" , SDescription = "Arabic grocessary store" , Website = "",IsMultipleCategory = false},
@@ -111,7 +111,76 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Dove" , SDescription = "Famous for various products for health care." , Website = "http://www.dove.ca/en/default.aspx",IsMultipleCategory = false},
                 new ProductMaster {Name = "Aveno" , SDescription = "Fmouse for bath products." , Website = "http://www.avino.com/s/Home.asp",IsMultipleCategory = false},
                 new ProductMaster {Name = "Old Spice" , SDescription = "Most famous brand for Men." , Website = "http://oldspice.com/en",IsMultipleCategory = false},
-                new ProductMaster {Name = "Nevia" , SDescription = "Verity of Products for health care." , Website = "http://www.nivea.ca",IsMultipleCategory = false}
+                new ProductMaster {Name = "Nevia" , SDescription = "Verity of Products for health care." , Website = "http://www.nivea.ca",IsMultipleCategory = false},
+
+                //Products for "Social Network" sub category
+                new ProductMaster {Name = "Facebook" , SDescription = "" , Website = "https://www.facebook.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Twitter" , SDescription = "" , Website = "https://twitter.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Pinterest" , SDescription = "" , Website = "https://www.pinterest.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Google" , SDescription = "" , Website = "https://plus.google.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Instagram" , SDescription = "" , Website = "https://www.instagram.com/",IsMultipleCategory = false},
+            
+                //Products for "E-Commerce" sub category
+                new ProductMaster {Name = "Amazon" , SDescription = "" , Website = "http://www.amazon.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Ebay" , SDescription = "" , Website = "http://www.ebay.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Think Geek" , SDescription = "" , Website = "http://www.thinkgeek.com/i",IsMultipleCategory = false},
+                new ProductMaster {Name = "Ali Express" , SDescription = "" , Website = "http://www.aliexpress.com/",IsMultipleCategory = false},
+
+                //Products for "Financial/Banks" sub category
+                new ProductMaster {Name = "TD" , SDescription = "" , Website = "https://www.tdcanadatrust.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Scotia Bank" , SDescription = "" , Website = "http://www.scotiabank.com",IsMultipleCategory = false},
+                new ProductMaster {Name = "RBC" , SDescription = "" , Website = "http://www.rbcroyalbank.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "BMO" , SDescription = "" , Website = "https://www.bmo.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "CIBC" , SDescription = "" , Website = "https://www.cibc.com",IsMultipleCategory = false},
+
+                //Products for "Job Hunting" sub category
+                new ProductMaster {Name = "Monster" , SDescription = "" , Website = "www.monster.ca",IsMultipleCategory = false},
+                new ProductMaster {Name = "LinkedIn" , SDescription = "" , Website = "linkedin.com",IsMultipleCategory = false},
+                new ProductMaster {Name = "Indeed" , SDescription = "" , Website = "ca.indeed.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Wokopolis" , SDescription = "" , Website = "www.workopolis.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Job Bank" , SDescription = "" , Website = "www.jobbank.gc.ca/",IsMultipleCategory = false},
+
+                //Products for "Video Streaming" sub category
+                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "" , SDescription = "" , Website = "",IsMultipleCategory = false},
+
+                //Products for "Secutiry Software" sub category
+                new ProductMaster {Name = "Avira" , SDescription = "" , Website = "https://www.avira.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Ad-Aware" , SDescription = "" , Website = "http://lavasoft.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Avast" , SDescription = "" , Website = "https://www.avast.com/index",IsMultipleCategory = false},
+                new ProductMaster {Name = "Karspersky" , SDescription = "" , Website = "http://www.kaspersky.ca/",IsMultipleCategory = false},
+                new ProductMaster {Name = "AVG" , SDescription = "" , Website = "http://www.avg.com/",IsMultipleCategory = false},
+
+                //Products for "Productive Tools" sub category
+                new ProductMaster {Name = "Jira" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "Evernote" , SDescription = "Free edition for everyone" , Website = "https://evernote.com/?var=1",IsMultipleCategory = false},
+                new ProductMaster {Name = "ODesk" , SDescription = "Busineess helper." , Website = "https://www.upwork.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Freed Camp" , SDescription = "This tool is for everyone with many features." , Website = "https://freedcamp.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Pocket" , SDescription = "Famous application in North America." , Website = "https://getpocket.com/",IsMultipleCategory = false},
+
+                //Products for "Developement Tools" sub category
+                new ProductMaster {Name = "Eclipse" , SDescription = "Open source tools for Java based applications." , Website = "https://netbeans.org/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Netbeans" , SDescription = "IDE for Java and Php applications." , Website = "http://www.eclipse.org/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Visual Studio" , SDescription = "IDE for .net applications." , Website = "https://www.visualstudio.com",IsMultipleCategory = false},
+                new ProductMaster {Name = "Komodo Edit" , SDescription = "IDE for open source Extension developement." , Website = "http://komodoide.com/komodo-edit/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Code::Blocks" , SDescription = "I even dont know what it is." , Website = "http://codeblocks.org/",IsMultipleCategory = false},
+
+                //Products for "Communication Tools" sub category
+                new ProductMaster {Name = "Skype" , SDescription = "Famous for business." , Website = "https://slack.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Slake" , SDescription = "New start up and famous for developer." , Website = "http://www.skype.com/en/",IsMultipleCategory = false},
+                new ProductMaster {Name = "HipChat" , SDescription = "New Start up." , Website = "https://www.hipchat.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Discord" , SDescription = "NOt as good as skype." , Website = "https://discordapp.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Glip" , SDescription = "Mainly famous in North America." , Website = "https://glip.com/",IsMultipleCategory = false},
+
+                //Products for "Games" sub category
+                new ProductMaster {Name = "Call of Duty" , SDescription = "Action game." , Website = "https://www.callofduty.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "FIFA" , SDescription = "Soccer game." , Website = "http://www.fifa.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Counter Strike" , SDescription = "Best action team game." , Website = "http://blog.counter-strike.net/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Splace Invaders" , SDescription = "New Game" , Website = "http://www.space-invaders.com/home/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Spidare Solitare" , SDescription = "Card Game" , Website = "http://www.free-spider-solitaire.com/",IsMultipleCategory = false}
             };
             products.ForEach(p => context.ProductMasters.Add(p));
             context.SaveChanges();
