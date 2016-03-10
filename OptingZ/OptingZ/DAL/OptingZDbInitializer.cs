@@ -141,11 +141,11 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Job Bank" , SDescription = "" , Website = "www.jobbank.gc.ca/",IsMultipleCategory = false},
 
                 //Products for "Video Streaming" sub category
-                new ProductMaster {Name = "YouTube" , SDescription = "" , Website = "https://www.youtube.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Netflix" , SDescription = "" , Website = "http://www.netflix.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Hulu" , SDescription = "" , Website = "http://www.hulu.com/welcome",IsMultipleCategory = false},
-                new ProductMaster {Name = "Dailmotion" , SDescription = "" , Website = "http://www.dailymotion.com/ca-en",IsMultipleCategory = false},
-                new ProductMaster {Name = "Vevo" , SDescription = "" , Website = "http://www.vevo.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "YouTube" , SDescription = "Most popular video streaming website" , Website = "https://www.youtube.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Netflix" , SDescription = "Largest collection of movies and TV shows" , Website = "http://www.netflix.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Hulu" , SDescription = "Video streaming website" , Website = "http://www.hulu.com/welcome",IsMultipleCategory = false},
+                new ProductMaster {Name = "Dailymotion" , SDescription = "One of the first video streaming site" , Website = "http://www.dailymotion.com/ca-en",IsMultipleCategory = false},
+                new ProductMaster {Name = "Vevo" , SDescription = "Video streaming site" , Website = "http://www.vevo.com/",IsMultipleCategory = false},
 
                 //Products for "Secutiry Software" sub category
                 new ProductMaster {Name = "Avira" , SDescription = "" , Website = "https://www.avira.com/",IsMultipleCategory = false},
