@@ -311,6 +311,16 @@ namespace OptingZ.DAL
 
             productcategories.ForEach(p => context.ProductCategoryMasters.Add(p));
             context.SaveChanges();
+
+
+            var users = new List<UserRoleMaster>
+            {
+                new UserRoleMaster { Name="Standard User" }
+            };
+            users.ForEach(u => context.UserRoleMasters.Add(u));
+            context.SaveChanges();
+
+
             base.Seed(context);
         }
     }

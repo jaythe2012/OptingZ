@@ -22,7 +22,12 @@ namespace OptingZ.DAL
         public DbSet<StickerMaster> StickerMasters { get; set; }
         public DbSet<ProductStickerMaster> ProductStickerMasters { get; set; }
         public DbSet<ProductCategoryMaster> ProductCategoryMasters { get; set; }
+        public DbSet<UserMaster> UserMasters { get; set; }
+        public DbSet<UserRoleMaster> UserRoleMasters { get; set; }
+        public DbSet<UserFileMaster> UserFileMasters { get; set; }
+        public DbSet<UserDetailMaster> UserDetailMasters { get; set; }
         
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -49,5 +54,6 @@ namespace OptingZ.DAL
                 .WithMany()
                 .WillCascadeOnDelete(false);
         }
+
     }
 }

@@ -10,6 +10,8 @@ namespace OptingZ.DAL
         private OptingzDbContext context = new OptingzDbContext();
         private ProductRepository productRepository;
         private ProductCategoryRepository productCategoryRepository;
+        private UserFileRepository userFileRepository;
+        private UserRepository userRepository;
 
 
         #region Repos
@@ -35,6 +37,30 @@ namespace OptingZ.DAL
                     this.productCategoryRepository = new ProductCategoryRepository(context);
                 }
                 return productCategoryRepository;
+            }
+        }
+
+        public UserFileRepository UserFileRepository
+        {
+            get
+            {
+                if (this.userFileRepository == null)
+                {
+                    this.userFileRepository = new UserFileRepository(context);
+                }
+                return userFileRepository;
+            }
+        }
+
+        public UserRepository UserRepository
+        {
+            get
+            {
+                if (this.userRepository == null)
+                {
+                    this.userRepository = new UserRepository(context);
+                }
+                return userRepository;
             }
         }
 
