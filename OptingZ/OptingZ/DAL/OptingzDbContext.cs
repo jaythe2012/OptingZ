@@ -28,6 +28,26 @@ namespace OptingZ.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<SubCategoryMaster>()
+                .HasRequired(c => c.CategoryMaster)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CityMaster>()
+                .HasRequired(c => c.StateMaster)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StateMaster>()
+                .HasRequired(c => c.CountryMaster)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CountryMaster>()
+                .HasRequired(c => c.GeoMaster)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
     }
 }
