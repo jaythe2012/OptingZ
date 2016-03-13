@@ -23,10 +23,21 @@ namespace OptingZ.Controllers
         }
 
         [HttpGet]
+        public ActionResult TestPartial()
+        {
+            //IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
+            IEnumerable<ProductMaster> Products = new List<ProductMaster>{
+                        new ProductMaster() { Name = "1", SDescription= "John", Website = "18" } ,
+                        new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" }
+                    };
+
+            return PartialView(Products);
+        }
+
+        [HttpGet]
         //Get : Products/Alternative
         public ActionResult Alternative(string pName)
         {
-
             pName = WebUtility.UrlDecode(pName);
             ProductMaster prod = uow.ProductRepository.Get(
                 filter: d => d.Name == pName,
@@ -42,9 +53,9 @@ namespace OptingZ.Controllers
                 ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
             }
             List<ProductMaster> Products = new List<ProductMaster>();
-            foreach(int id in ProductIDs)
+            foreach (int id in ProductIDs)
             {
-                if(id != prod.ID)
+                if (id != prod.ID)
                     Products.Add(uow.ProductRepository.GetByID(id));
             }
             return View(Products);
@@ -72,8 +83,8 @@ namespace OptingZ.Controllers
 
             foreach (int id in ProductIDs)
             {
-               // if (id != prod.ID)
-                 Products.Add(uow.ProductRepository.GetByID(id));
+                // if (id != prod.ID)
+                Products.Add(uow.ProductRepository.GetByID(id));
             }
             return View(Products);
         }
