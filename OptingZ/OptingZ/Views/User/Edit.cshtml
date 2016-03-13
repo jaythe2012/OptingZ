@@ -56,12 +56,12 @@
     
             @if (Model.UserFiles != null)
             { 
-                if (Model.UserFiles.Any(f => f.FileType == OptingZ.Models.FileType.ProfilePic))
+                if (Model.UserFiles.FileType == OptingZ.Models.FileType.ProfilePic)
                 {
                 <div class="form-group">
                     <span class="control-label col-md-2"><strong>Current Picture</strong></span>
                     <div class="col-md-10">
-                        <img src="~/UserFileMaster?id=@Model.UserFiles.First(f => f.FileType == OptingZ.Models.FileType.ProfilePic).ID" alt="image" />
+                        <img src="~/UserFileMaster?id=@Model.UserFiles.ID" alt="image" />
                     </div>
                 </div>
                 }
@@ -74,7 +74,40 @@
                 </div>
             </div>
 
-    
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserDetailMaster.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserDetailMaster.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserDetailMaster.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserDetailMaster.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserDetailMaster.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserDetailMaster.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserDetailMaster.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserDetailMaster.Sex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserDetailMaster.IsSubscribedByEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.UserDetailMaster.IsSubscribedByEmail)
+                        @Html.ValidationMessageFor(model => model.UserDetailMaster.IsSubscribedByEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default" />

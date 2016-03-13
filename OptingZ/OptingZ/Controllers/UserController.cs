@@ -90,12 +90,31 @@ namespace OptingZ.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstName,Email,Password,UserRoleMasterID")] UserMaster userMaster, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,LastName,FirstName,Email,Password,UserRoleMasterID,UserDetailMaster")] UserMaster userMaster, HttpPostedFileBase upload)
         {
+            ///Another way to perfrom multiple table update is using AutoMapper. Need to discuss pro and cons.
+            ///http://stackoverflow.com/questions/15336248/entity-framework-5-updating-a-record
+
+            UserMaster original = uow.UserRepository.Get(
+                   filter: u => u.ID == userMaster.ID,
+                   includeProperties: "UserDetailMaster,UserFiles"
+                   ).SingleOrDefault();
+
+          
             if (ModelState.IsValid)
             {
+                original.LastName = userMaster.LastName;
+                original.FirstName = userMaster.FirstName;
+                original.Password = userMaster.Password;
+                original.Email = userMaster.Email;
                 if (upload != null && upload.ContentLength > 0)
                 {
+                    if (original.UserFiles != null)
+                    {
+                        UserFileMaster ufm = uow.UserFileRepository.GetFileByUserID(original.ID);
+                        uow.UserFileRepository.Delete(ufm);
+                        uow.Save();
+                    }
                     var image = new UserFileMaster
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
@@ -107,23 +126,24 @@ namespace OptingZ.Controllers
                     {
                         image.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    userMaster.UserFiles = new List<UserFileMaster> { image };
-                    uow.UserFileRepository.Add(userMaster.UserFiles.FirstOrDefault());
-
+                    original.UserFiles = image;
                 }
-                userMaster.UserRoleMasterID = 1;
-                
-                
-                uow.UserRepository.Update(userMaster);
+
+                if (original.UserDetailMaster != null)
+                {
+                    UserDetailMaster udm = uow.UserDetailRepository.GetUserDetailByUserID(original.ID);
+                    uow.UserDetailRepository.Delete(udm);
+                    uow.Save();
+                }
+                original.UserDetailMaster = userMaster.UserDetailMaster;
+                original.UserDetailMaster.UserMasterID = userMaster.ID;
+                original.UserRoleMasterID = 1;
+                uow.UserRepository.Update(original);
                 uow.Save();
                 
-                //db.Entry(userMaster).State = EntityState.Modified;
-                ////db.Entry(userMaster.UserFiles).State = EntityState.Modified;
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
             }
             //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
-            return View(userMaster);
+            return View(original);
         }
 
         // GET: User/Delete/5

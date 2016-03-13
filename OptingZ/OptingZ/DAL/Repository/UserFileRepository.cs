@@ -12,5 +12,11 @@ namespace OptingZ.DAL
         {
 
         }
+
+        public UserFileMaster GetFileByUserID(int userID)
+        {
+            UserFileMaster userFileMaster = context.UserFileMasters.Where(p => p.UserMasterID == userID).SingleOrDefault();
+            return userFileMaster;
+        }
     }
 }

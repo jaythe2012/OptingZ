@@ -12,8 +12,8 @@ namespace OptingZ.Models
         public string Password { get; set; }
         [ForeignKey("UserRoleMaster")]
         public int UserRoleMasterID { get; set; }
-
-        public virtual ICollection<UserFileMaster> UserFiles { get; set; }
+        public virtual UserFileMaster UserFiles { get; set; }
         public virtual UserRoleMaster UserRoleMaster { get; set; }
+        public virtual UserDetailMaster UserDetailMaster { get; set; }
     }
 }

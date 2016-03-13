@@ -12,6 +12,7 @@ namespace OptingZ.DAL
         private ProductCategoryRepository productCategoryRepository;
         private UserFileRepository userFileRepository;
         private UserRepository userRepository;
+        private UserDetailRepository userDetailRepository;
 
 
         #region Repos
@@ -61,6 +62,18 @@ namespace OptingZ.DAL
                     this.userRepository = new UserRepository(context);
                 }
                 return userRepository;
+            }
+        }
+
+        public UserDetailRepository UserDetailRepository
+        {
+            get
+            {
+                if (this.userDetailRepository == null)
+                {
+                    this.userDetailRepository = new UserDetailRepository(context);
+                }
+                return userDetailRepository;
             }
         }
 

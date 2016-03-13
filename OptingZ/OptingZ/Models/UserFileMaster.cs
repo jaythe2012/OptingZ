@@ -13,9 +13,8 @@ namespace OptingZ.Models
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
         public FileType FileType { get; set; }
-        [ForeignKey("UserMaster")]
         public int UserMasterID { get; set; }
-        public virtual UserMaster UserMaster { get; set; }
+        
     }
 
     public enum FileType

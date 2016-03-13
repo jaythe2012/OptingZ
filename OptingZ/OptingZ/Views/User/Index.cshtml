@@ -17,9 +17,9 @@
     </p>
     <table class="table">
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.UserRoleMaster.Name)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
@@ -37,9 +37,9 @@
     
     @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.UserRoleMaster.Name)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>

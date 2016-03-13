@@ -164,6 +164,7 @@
     <Compile Include="DAL\OptingZDbInitializer.cs" />
     <Compile Include="DAL\Repository\ProductCategoryRepository.cs" />
     <Compile Include="DAL\Repository\ProductRepository.cs" />
+    <Compile Include="DAL\Repository\UserDetailRepository.cs" />
     <Compile Include="DAL\Repository\UserFileRepository.cs" />
     <Compile Include="DAL\Repository\UserRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
