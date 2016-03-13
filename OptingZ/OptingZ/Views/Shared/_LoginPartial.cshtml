@@ -16,6 +16,33 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Create", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        @*<li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
+        <li style="margin-top:9px">
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    Sign In
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="min-width: 315px; ">
+                    <form action="/" class="form-horizontal" method="post" style="margin: 5px 15px 11px 30px;">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="checkbox" style="margin-left: -13px; margin-top:-11px;  margin-bottom: 10px">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                        <button style="margin-left: -13px;" type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </ul>
+            </div>
+        </li>
     </ul>
 }
