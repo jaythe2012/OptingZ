@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -9,18 +10,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
-        <th>
+        <th class="col-md-2">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        <th class="col-md-3">
             @Html.DisplayNameFor(model => model.SDescription)
         </th>
-        <th>
+        <th class="col-md-1">
             @Html.DisplayNameFor(model => model.IsMultipleCategory)
         </th>
-        <th>
+        <th class="col-md-3">
             @Html.DisplayNameFor(model => model.Website)
         </th>
         <th></th>
@@ -28,19 +29,19 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="col-md-2">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td class="col-md-3">
             @Html.DisplayFor(modelItem => item.SDescription)
         </td>
-        <td>
+        <td class="col-md-1">
             @Html.DisplayFor(modelItem => item.IsMultipleCategory)
         </td>
-        <td>
+        <td class="col-md-3">
             @Html.DisplayFor(modelItem => item.Website)
         </td>
-        <td>
+        <td class="col-md-3">
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
