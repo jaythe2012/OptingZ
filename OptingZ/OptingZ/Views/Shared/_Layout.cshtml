@@ -33,6 +33,9 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        @{
+            Html.RenderAction("TestPartial","Home");
+        }
         <footer>
             <p>&copy; @DateTime.Now.Year - OptingZ.com</p>
         </footer>

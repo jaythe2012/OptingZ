@@ -22,17 +22,18 @@ namespace OptingZ.Controllers
             return View(Products);
         }
 
-        [HttpGet]
-        public ActionResult TestPartial()
-        {
-            //IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
-            IEnumerable<ProductMaster> Products = new List<ProductMaster>{
-                        new ProductMaster() { Name = "1", SDescription= "John", Website = "18" } ,
-                        new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" }
-                    };
+        //[ChildActionOnly]
+        //public ActionResult TestPartial()
+        //{
+        //    var Products = uow.ProductRepository.GetAll();
+        //    //var Products = new List<ProductMaster>{
+        //    //            new ProductMaster() { Name = "1", SDescription= "John", Website = "18" } ,
+        //    //            new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" },
+        //    //        };
 
-            return PartialView(Products);
-        }
+        //    return PartialView(Products.ToList());
+        //    //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
+        //}
 
         [HttpGet]
         //Get : Products/Alternative
