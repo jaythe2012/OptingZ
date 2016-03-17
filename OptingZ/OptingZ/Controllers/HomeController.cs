@@ -31,7 +31,7 @@ namespace OptingZ.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult TestPartial()
+        public ActionResult SearchResultPartial()
         {
             var Products = uow.ProductRepository.GetAll();
             //var Products = new List<ProductMaster>{
@@ -39,7 +39,7 @@ namespace OptingZ.Controllers
             //            new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" },
             //        };
 
-            return PartialView(Products.ToList());
+            return PartialView(Products.ToList().Take(5));
             //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
         }
     }

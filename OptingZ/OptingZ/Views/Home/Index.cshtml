@@ -21,9 +21,8 @@
 </div>
 
 <div class="row">
+    @{
+        Html.RenderAction("SearchResultPartial", "Home");
+    }
     @*@Html.Partial("TestPartial")*@
-    
-    @*@{
-        Html.RenderAction("~/Views/Shared/TestPartial.cshtml", "Products");
-    }*@
-</div>
+    </div>

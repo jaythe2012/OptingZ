@@ -1,0 +1,50 @@
+﻿@model IEnumerable<OptingZ.Models.ProductMaster>
+
+@*<p>
+        Whats Upp!!!
+    </p>*@
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+        </tr>
+    }
+</table>*@
+
+<div class="col-md-6">
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item">
+                <div class="col-xs-4 col-md-2 thumbnail" style="margin:0px 10px 0px 0px;">
+                    <img src="https://lh3.googleusercontent.com/-mzaOidqc2g0/AAAAAAAAAAI/AAAAAAAAAF4/ilvw0c_UA-w/s120-c/photo.jpg" alt="...">
+                </div>
+                <span class="badge">Views 14</span>
+                <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.Name)</h4>
+                <p class="list-group-item-text">@Html.DisplayFor(modelItem => item.SDescription)</p>
+                <a href="#">@Html.DisplayFor(modelItem => item.Website)</a>
+            </div>
+        }
+    </div>
+</div>
