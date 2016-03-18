@@ -3,26 +3,43 @@
 @{
     ViewBag.Title = "Home Page";
 }
+
+<script type="text/javascript">
+    @*$(function () {
+        $('#btnClick').click(function (data) {
+            $.post("@Url.Action("SearchResultPartial", "Home")", function (data) {
+                if (data) {
+                    $('#divTest').append(data);
+                }
+            });
+        });
+    });*@
+
+    $('#btnClick').click(function () {
+        $('#Content').Load('@Url.Action("SearchResultPartial", "Home")')
+    });
+</script>
+
 <div class="jumbotron">
     <h1>OptingZ</h1>
-    <div class="row col-md-6">
-        <p class="lead" style="font-size:14px">There're always options available for anything you look for. Why not search for all available alternatives and Optingz for one suits you most!!</p>
-        <p><a href="http://www.optingz.com/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-    <div class="row col-md-6 right">
-        <p>Here is the way to find alternatives by OptingZ!!!</p>
+    <p class="lead" style="font-size:14px">There're always options available for anything you look for. Why not search for all available alternatives and Optingz for one suits you most!!!, Here is the way to find alternatives by OptingZ!!!</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
         <div class="input-group">
             <input type="text" class="form-control" placeholder="What you need an alternative for?">
             <span class="input-group-btn col-md-1" style="margin-left:-14px">
-                <button class="btn btn-success" type="button">Opt it Bud!!</button>
+                <button class="btn btn-success" id="btnClick" type="submit">Opt it Bud!!</button>
             </span>
         </div>
-    </div>
+    }
 </div>
 
-<div class="row">
+<div id="Content" class="row">
     @{
-        Html.RenderAction("SearchResultPartial", "Home");
+        Html.RenderAction("SearchResultPartial", "Home", new { value = 0 });
     }
+
+    @*test page*@
     @*@Html.Partial("TestPartial")*@
-    </div>
+</div>

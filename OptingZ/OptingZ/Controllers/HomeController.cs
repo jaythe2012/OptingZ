@@ -31,16 +31,17 @@ namespace OptingZ.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult SearchResultPartial()
+        public ActionResult SearchResultPartial(int? value)
         {
             var Products = uow.ProductRepository.GetAll();
-            //var Products = new List<ProductMaster>{
-            //            new ProductMaster() { Name = "1", SDescription= "John", Website = "18" } ,
-            //            new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" },
-            //        };
 
-            return PartialView(Products.ToList().Take(5));
-            //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
+            if (value == null)
+                return PartialView(Products.ToList().Take(1));
+            else
+            {
+                return PartialView(Products.ToList().Take(value.Value));
+                //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
+            }
         }
     }
 }
