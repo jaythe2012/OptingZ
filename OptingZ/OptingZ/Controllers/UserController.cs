@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using OptingZ.DAL;
 using OptingZ.Models;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
 
 namespace OptingZ.Controllers
 {
@@ -16,6 +19,19 @@ namespace OptingZ.Controllers
         //private OptingzDbContext db = new OptingzDbContext();
 
         private UnitOfWork uow = new UnitOfWork();
+
+        private UserManager<ApplicationUser> UserManager;
+
+        public UserController(UserManager<ApplicationUser> userManager)
+        {
+            this.UserManager = userManager;
+        }
+
+        public UserController()
+        {
+           
+        }
+
         // GET: User
         public ActionResult Index()
         {
@@ -51,20 +67,49 @@ namespace OptingZ.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstName,Email,Password,UserRoleMasterID")] UserMaster userMaster)
+        public async Task<ActionResult> Create([Bind(Include = "ID,LastName,FirstName,UserName,Email,Password,UserRoleMasterID")] UserMaster userMaster)
         {
             if (ModelState.IsValid)
             {
-                  
-                userMaster.UserRoleMasterID = 1;
-                uow.UserRepository.Add(userMaster);
-                uow.Save();
+                #region ASP.Net Registration
+                var user = new ApplicationUser() { UserName = userMaster.UserName };
+                var result = await UserManager.CreateAsync(user, userMaster.Password);
+                if (result.Succeeded)
+                {
+                    userMaster.UserID = user.Id;
+                    userMaster.UserName = user.UserName;
+                    userMaster.UserRoleMasterID = 1;
+                    uow.UserRepository.Add(userMaster);
+                    uow.Save();
+                    await SignInAsync(user, isPersistent: false);
+                }
+
+                    #endregion
+
+
+             }
+
+
+            return RedirectToAction("Index", "Home");
+        }
+        private IAuthenticationManager _authnManager;
+
+        // Modified this from private to public and add the setter
+        public IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                if (_authnManager == null)
+                    _authnManager = HttpContext.GetOwinContext().Authentication;
+                return _authnManager;
             }
-            
-          
-            return RedirectToAction("Index");
-            //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
-           // return View(userMaster);
+            set { _authnManager = value; }
+        }
+        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 
         // GET: User/Edit/5
@@ -83,6 +128,23 @@ namespace OptingZ.Controllers
             }
             //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
             return View(userMaster);
+        }
+
+        public ActionResult EditByName(string Name)
+        {
+            if (Name == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //UserMaster userMaster = db.UserMasters.Include(u => u.UserFiles).SingleOrDefault(u => u.ID == id);
+            UserMaster userMaster = uow.UserRepository.Get(filter: u => u.UserName == Name,
+                includeProperties: "UserFiles").SingleOrDefault();
+            if (userMaster == null)
+            {
+                return HttpNotFound();
+            }
+            //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
+            return RedirectToAction("Edit", "User", userMaster);
         }
 
         // POST: User/Edit/5
@@ -172,6 +234,35 @@ namespace OptingZ.Controllers
             //db.UserMasters.Remove(userMaster);
             //db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> LogIn([Bind(Include = "UserName,Password,RememberMe")] LogIn login)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindAsync(login.UserName, login.Password);
+                if (user != null)
+                {
+                    await SignInAsync(user, login.RememberMe);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                }
+
+                //return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        // POST: /Account/LogOff
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult SignOut()
+        {
+            AuthenticationManager.SignOut();
+            System.Web.HttpContext.Current.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

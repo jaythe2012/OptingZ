@@ -1,4 +1,5 @@
-﻿using OptingZ.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using OptingZ.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace OptingZ.DAL
 {
-    public class OptingzDbContext : DbContext
+    public class OptingzDbContext : IdentityDbContext<ApplicationUser>
     {
         public OptingzDbContext() : base("OptingzDbContext")
         {
@@ -34,7 +35,14 @@ namespace OptingZ.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<SubCategoryMaster>()
+         
+
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+        
+
+        modelBuilder.Entity<SubCategoryMaster>()
                 .HasRequired(c => c.CategoryMaster)
                 .WithMany()
                 .WillCascadeOnDelete(false);
