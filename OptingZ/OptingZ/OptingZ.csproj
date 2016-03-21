@@ -293,7 +293,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\TestPartial.cshtml" />
-    <Content Include="Views\Home\SearchResultPartial.cshtml" />
+    <Content Include="Views\Products\SearchResultPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
