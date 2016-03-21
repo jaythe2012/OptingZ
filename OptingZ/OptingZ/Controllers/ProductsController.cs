@@ -22,18 +22,34 @@ namespace OptingZ.Controllers
             return View(Products);
         }
 
-        //[ChildActionOnly]
-        //public ActionResult TestPartial()
-        //{
-        //    var Products = uow.ProductRepository.GetAll();
-        //    //var Products = new List<ProductMaster>{
-        //    //            new ProductMaster() { Name = "1", SDescription= "John", Website = "18" } ,
-        //    //            new ProductMaster() { Name = "2", SDescription = "Steve",  Website = "21" },
-        //    //        };
 
-        //    return PartialView(Products.ToList());
-        //    //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
-        //}
+        public PartialViewResult SearchResultPartial(string pName)
+        {
+            if (String.IsNullOrEmpty(pName))
+                pName = "IGA";
+
+            pName = WebUtility.UrlDecode(pName);
+            ProductMaster prod = uow.ProductRepository.Get(
+                filter: d => d.Name == pName,
+                includeProperties: "ProductCategorises"
+               ).First();
+            IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
+            List<int> ProductIDs = new List<int>();
+            foreach (ProductCategoryMaster pcm in pcms)
+            {
+                List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
+                    pcm.SubCategoryMasterID
+                    );
+                ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
+            }
+            List<ProductMaster> Products = new List<ProductMaster>();
+            foreach (int id in ProductIDs)
+            {
+                if (id != prod.ID)
+                    Products.Add(uow.ProductRepository.GetByID(id));
+            }
+            return PartialView(Products);
+        }
 
         [HttpGet]
         //Get : Products/Alternative

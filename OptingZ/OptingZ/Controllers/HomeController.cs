@@ -29,19 +29,5 @@ namespace OptingZ.Controllers
 
             return View();
         }
-
-        [ChildActionOnly]
-        public ActionResult SearchResultPartial(int? value)
-        {
-            var Products = uow.ProductRepository.GetAll();
-
-            if (value == null)
-                return PartialView(Products.ToList().Take(1));
-            else
-            {
-                return PartialView(Products.ToList().Take(value.Value));
-                //return PartialView("~/Views/Shared/TestPartial.cshtml", Products.ToList());
-            }
-        }
     }
 }

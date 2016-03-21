@@ -4,42 +4,36 @@
     ViewBag.Title = "Home Page";
 }
 
-<script type="text/javascript">
-    @*$(function () {
-        $('#btnClick').click(function (data) {
-            $.post("@Url.Action("SearchResultPartial", "Home")", function (data) {
-                if (data) {
-                    $('#divTest').append(data);
-                }
-            });
-        });
-    });*@
-
-    $('#btnClick').click(function () {
-        $('#Content').Load('@Url.Action("SearchResultPartial", "Home")')
-    });
-</script>
-
 <div class="jumbotron">
     <h1>OptingZ</h1>
     <p class="lead" style="font-size:14px">There're always options available for anything you look for. Why not search for all available alternatives and Optingz for one suits you most!!!, Here is the way to find alternatives by OptingZ!!!</p>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="What you need an alternative for?">
+    <div class="input-group">
+        <form action="/Home/Index" class="navbar-search" id="searchform" method="post">
+            <input type="text" class="form-control" id="pName" name="pName" value="@ViewBag.pName" placeholder="What you need an alternative for?">
             <span class="input-group-btn col-md-1" style="margin-left:-14px">
-                <button class="btn btn-success" id="btnClick" type="submit">Opt it Bud!!</button>
+                <input class="btn btn-success" id="btnClick" value="OptItBud!!!" type="submit" />
             </span>
-        </div>
-    }
+        </form>
+    </div>
 </div>
 
-<div id="Content" class="row">
-    @{
-        Html.RenderAction("SearchResultPartial", "Home", new { value = 0 });
-    }
+<div id="Content" class="row">@{Html.RenderAction("SearchResultPartial", "Products");}</div>
 
-    @*test page*@
-    @*@Html.Partial("TestPartial")*@
-</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".nav-collapse .nav li a").click(function (e) {
+            $(".nav-collapse .nav .active").removeClass("active")
+            $(this).parent().addClass("active")
+        });
+    });
+
+    $('#searchText').keypress(function (e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13 && $(this).val() != "") {
+            $('#searchform').submit();
+        }
+
+    });
+
+</script>
