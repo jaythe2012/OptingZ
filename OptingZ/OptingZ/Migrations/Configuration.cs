@@ -1,17 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using OptingZ.Models;
-using System.Data.Entity.Migrations;
-
-namespace OptingZ.DAL
+namespace OptingZ.Migrations
 {
-    public class OptingZDbInitializer : DropCreateDatabaseIfModelChanges<OptingzDbContext>
+    using Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<OptingZ.DAL.OptingzDbContext>
     {
-        protected override void Seed(OptingzDbContext context)
+        public Configuration()
         {
+            AutomaticMigrationsEnabled = false;
+        }
+
+        protected override void Seed(OptingZ.DAL.OptingzDbContext context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
+
             var categories = new List<CategoryMaster>
             {
                 new CategoryMaster { Name = "Websites" },
@@ -20,7 +37,7 @@ namespace OptingZ.DAL
                 new CategoryMaster { Name = "Brands" }
             };
 
-            categories.ForEach(c => context.CategoryMasters.AddOrUpdate(p => p.Name,c));
+            categories.ForEach(c => context.CategoryMasters.AddOrUpdate(p => p.Name, c));
             context.SaveChanges();
 
             var subcategories = new List<SubCategoryMaster>
@@ -30,33 +47,34 @@ namespace OptingZ.DAL
                 new SubCategoryMaster {Name= "Financial/Banks", CategoryMasterID= 1 },
                 new SubCategoryMaster {Name = "Job Hunting", CategoryMasterID = 1 },
                 new SubCategoryMaster {Name= "Video Streaming", CategoryMasterID= 1 },
-                
-                new SubCategoryMaster {Name = "Security Software", CategoryMasterID = 2 },               
+
+                new SubCategoryMaster {Name = "Security Software", CategoryMasterID = 2 },
                 new SubCategoryMaster {Name = "Productivity Tools", CategoryMasterID = 2 },
                 new SubCategoryMaster {Name = "Developement Tools", CategoryMasterID = 2 },
                 new SubCategoryMaster {Name = "Communication Tools", CategoryMasterID = 2 },
                 new SubCategoryMaster {Name = "Games", CategoryMasterID = 2 },
-                
+
                 new SubCategoryMaster {Name = "Super Market", CategoryMasterID = 3 },
                 new SubCategoryMaster {Name = "Grocery Stores", CategoryMasterID = 3 },
                 new SubCategoryMaster {Name = "Convenient Stores", CategoryMasterID = 3 },
                 new SubCategoryMaster {Name = "Pharmacies", CategoryMasterID = 3 },
 
-                new SubCategoryMaster {Name = "Clothes", CategoryMasterID = 4 },               
+                new SubCategoryMaster {Name = "Clothes", CategoryMasterID = 4 },
                 new SubCategoryMaster {Name = "Electronics", CategoryMasterID = 4 },
                 new SubCategoryMaster {Name = "Health Care", CategoryMasterID = 4 }
             };
 
-            subcategories.ForEach(s => context.SubCategoryMasters.AddOrUpdate(p => p.Name,s));
+            subcategories.ForEach(s => context.SubCategoryMasters.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
             var stickers = new List<StickerMaster>
             {
                 new StickerMaster {Name = "Groceries" },
-                new StickerMaster {Name = "Electronics" }
+                new StickerMaster {Name = "Electronics" },
+                new StickerMaster {Name = "Anti-Viruses" }
             };
 
-            stickers.ForEach(s => context.StickerMasters.AddOrUpdate(p => p.Name,s));
+            stickers.ForEach(s => context.StickerMasters.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
             var products = new List<ProductMaster>
@@ -85,7 +103,7 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Couche-Tard" , SDescription = "Very nice store but little bit costly." , Website = "http://www.couche-tard.com/index.html",IsMultipleCategory = false},
                 new ProductMaster {Name = "Depanneur" , SDescription = "Very good store and you can find good deal here." , Website = "http://www.ultramarcst.ca",IsMultipleCategory = false},
                 new ProductMaster {Name = "Monoprix" , SDescription = "Nice store but more constly." , Website = "https://www.monoprix.fr/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Marché Cosmopolitain" , SDescription = "Very few number of stores." , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "March� Cosmopolitain" , SDescription = "Very few number of stores." , Website = "",IsMultipleCategory = false},
                 
                 //Products for "Pharmacies" sub category
                 new ProductMaster {Name = "Jean Coutu" , SDescription = "Big pharmacy store with very good deals available." , Website = "https://www.jeancoutu.com/",IsMultipleCategory = false},
@@ -183,7 +201,7 @@ namespace OptingZ.DAL
                 new ProductMaster {Name = "Splace Invaders" , SDescription = "New Game" , Website = "http://www.space-invaders.com/home/",IsMultipleCategory = false},
                 new ProductMaster {Name = "Spidare Solitare" , SDescription = "Card Game" , Website = "http://www.free-spider-solitaire.com/",IsMultipleCategory = false}
             };
-           // products.ForEach(p => context.ProductMasters.Add(p));
+            // products.ForEach(p => context.ProductMasters.Add(p));
             products.ForEach(s => context.ProductMasters.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
@@ -287,12 +305,12 @@ namespace OptingZ.DAL
                 new ProductCategoryMaster { ProductMasterID = 59, CategoryMasterID = 1, SubCategoryMasterID = 5 },
                 new ProductCategoryMaster { ProductMasterID = 60, CategoryMasterID = 1, SubCategoryMasterID = 5 },
                 new ProductCategoryMaster { ProductMasterID = 61, CategoryMasterID = 1, SubCategoryMasterID = 5 },
-                
-				new ProductCategoryMaster { ProductMasterID = 62, CategoryMasterID = 2, SubCategoryMasterID = 6 },
-				new ProductCategoryMaster { ProductMasterID = 63, CategoryMasterID = 2, SubCategoryMasterID = 6 },
-				new ProductCategoryMaster { ProductMasterID = 64, CategoryMasterID = 2, SubCategoryMasterID = 6 },
-				new ProductCategoryMaster { ProductMasterID = 65, CategoryMasterID = 2, SubCategoryMasterID = 6 },
-				new ProductCategoryMaster { ProductMasterID = 66, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+
+                new ProductCategoryMaster { ProductMasterID = 62, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+                new ProductCategoryMaster { ProductMasterID = 63, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+                new ProductCategoryMaster { ProductMasterID = 64, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+                new ProductCategoryMaster { ProductMasterID = 65, CategoryMasterID = 2, SubCategoryMasterID = 6 },
+                new ProductCategoryMaster { ProductMasterID = 66, CategoryMasterID = 2, SubCategoryMasterID = 6 },
 
                 new ProductCategoryMaster { ProductMasterID = 67, CategoryMasterID = 2, SubCategoryMasterID = 7 },
                 new ProductCategoryMaster { ProductMasterID = 68, CategoryMasterID = 2, SubCategoryMasterID = 7 },
@@ -334,12 +352,13 @@ namespace OptingZ.DAL
 
             var users = new List<UserRoleMaster>
             {
-                new UserRoleMaster { Name="Standard User" }
+                new UserRoleMaster { Name="Standard User", Access="Basic" },
+                new UserRoleMaster { Name="Admin User", Access="Advance" },
+                new UserRoleMaster { Name="Sub Admin User", Access="Intermediate" }
             };
-            users.ForEach(u => context.UserRoleMasters.AddOrUpdate(p => p.Name,u));
+            users.ForEach(u => context.UserRoleMasters.AddOrUpdate(p => p.Name, u));
             context.SaveChanges();
 
-            base.Seed(context);
         }
     }
 }

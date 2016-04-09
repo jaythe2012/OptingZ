@@ -217,6 +217,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604091539217_InitialCreate.cs" />
+    <Compile Include="Migrations\201604091539217_InitialCreate.Designer.cs">
+      <DependentUpon>201604091539217_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604092052392_AddUserRoleAccess.cs" />
+    <Compile Include="Migrations\201604092052392_AddUserRoleAccess.Designer.cs">
+      <DependentUpon>201604092052392_AddUserRoleAccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryMaster.cs" />
     <Compile Include="Models\CityMaster.cs" />
     <Compile Include="Models\CountryMaster.cs" />
@@ -308,6 +317,14 @@
     </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604091539217_InitialCreate.resx">
+      <DependentUpon>201604091539217_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604092052392_AddUserRoleAccess.resx">
+      <DependentUpon>201604092052392_AddUserRoleAccess.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

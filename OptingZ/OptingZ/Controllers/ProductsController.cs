@@ -25,30 +25,32 @@ namespace OptingZ.Controllers
 
         public PartialViewResult SearchResultPartial(string pName)
         {
-            if (String.IsNullOrEmpty(pName))
-                pName = "IGA";
+            if (!String.IsNullOrEmpty(pName))
+            {
 
-            pName = WebUtility.UrlDecode(pName);
-            ProductMaster prod = uow.ProductRepository.Get(
-                filter: d => d.Name == pName,
-                includeProperties: "ProductCategorises"
-               ).First();
-            IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
-            List<int> ProductIDs = new List<int>();
-            foreach (ProductCategoryMaster pcm in pcms)
-            {
-                List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
-                    pcm.SubCategoryMasterID
-                    );
-                ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
-            }
-            List<ProductMaster> Products = new List<ProductMaster>();
-            foreach (int id in ProductIDs)
-            {
-                if (id != prod.ID)
-                    Products.Add(uow.ProductRepository.GetByID(id));
-            }
-            return PartialView(Products);
+                pName = WebUtility.UrlDecode(pName);
+                ProductMaster prod = uow.ProductRepository.Get(
+                    filter: d => d.Name == pName,
+                    includeProperties: "ProductCategorises"
+                   ).First();
+                    IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
+                    List<int> ProductIDs = new List<int>();
+                    foreach (ProductCategoryMaster pcm in pcms)
+                    {
+                        List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
+                            pcm.SubCategoryMasterID
+                            );
+                        ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
+                    }
+                    List<ProductMaster> Products = new List<ProductMaster>();
+                    foreach (int id in ProductIDs)
+                    {
+                        if (id != prod.ID)
+                            Products.Add(uow.ProductRepository.GetByID(id));
+                    }
+                    return PartialView(Products); 
+                }
+            return null;
         }
 
         [HttpGet]

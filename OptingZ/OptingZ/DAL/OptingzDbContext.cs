@@ -13,7 +13,7 @@ namespace OptingZ.DAL
     {
         public OptingzDbContext() : base("OptingzDbContext")
         {
-            Database.SetInitializer<OptingzDbContext>(new OptingZDbInitializer());
+           // Database.SetInitializer<OptingzDbContext>(new OptingZDbInitializer());
         }
 
 
