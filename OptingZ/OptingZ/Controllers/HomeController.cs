@@ -29,5 +29,17 @@ namespace OptingZ.Controllers
 
             return View();
         }
+
+        
+        public JsonResult AutoCompleteProduct(string term)
+        {
+            //var result = (from r in db.Customers
+            //              where r.Country.ToLower().Contains(term.ToLower())
+            //              select new { r.Country }).Distinct();
+            var result = uow.ProductRepository.GetNames(term).Select(p => new { label = p.Name, id = p.ID, value = p.IsMultipleCategory });
+          //  var test = Json(result, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

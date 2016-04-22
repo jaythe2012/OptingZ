@@ -203,6 +203,17 @@ namespace OptingZ.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult AutoCompleteProduct(string term)
+        {
+            //var result = (from r in db.Customers
+            //              where r.Country.ToLower().Contains(term.ToLower())
+            //              select new { r.Country }).Distinct();
+            var result = uow.ProductRepository.GetNames(term);
+            
+            var test = Json(result, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
