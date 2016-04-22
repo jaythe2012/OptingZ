@@ -1,4 +1,4 @@
-namespace OptingZ.Migrations
+﻿namespace OptingZ.Migrations
 {
     using Models;
     using System;
@@ -6,6 +6,7 @@ namespace OptingZ.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using OptingZ.Utils;
 
     internal sealed class Configuration : DbMigrationsConfiguration<OptingZ.DAL.OptingzDbContext>
     {
@@ -80,126 +81,126 @@ namespace OptingZ.Migrations
             var products = new List<ProductMaster>
             {
                 //Products for "Super Market's" Sub Category.
-                new ProductMaster {Name = "WalMart" , SDescription = "Nice Mall" , Website = "www.walmart.ca",IsMultipleCategory = true},
-                new ProductMaster {Name = "Maxi & Cie", SDescription = "Very Nice Mall" , Website = "www.maxi.com", IsMultipleCategory= false },
-                new ProductMaster {Name = "IGA" , SDescription = "Expensive Mall" , Website = "www.IGA.ca",IsMultipleCategory = false},
-                new ProductMaster {Name = "Canadien Tire" , SDescription = "Famous mall for house-hold stuff" , Website = "http://www.canadiantire.ca/en.html",IsMultipleCategory = false},
-                new ProductMaster {Name = "Super C" , SDescription = "Very nice big grocessary store" , Website = "http://www.superc.ca/en/index.html",IsMultipleCategory = false},
-                new ProductMaster {Name = "Metro" , SDescription = "" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "WalMart" , SDescription = "Nice Mall" , Website = "www.walmart.ca",IsMultipleCategory = true, Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Maxi & Cie", SDescription = "Very Nice Mall" , Website = "www.maxi.com", IsMultipleCategory= false , Views = RandomNumberGenerator.GetRandomNumber(80,100) },
+                new ProductMaster {Name = "IGA" , SDescription = "Expensive Mall" , Website = "www.IGA.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Canadien Tire" , SDescription = "Famous mall for house-hold stuff" , Website = "http://www.canadiantire.ca/en.html",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Super C" , SDescription = "Very nice big grocessary store" , Website = "http://www.superc.ca/en/index.html",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Metro" , SDescription = "" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
                 
                 //Products for Website Category.
-                new ProductMaster {Name = "Amazon US", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false },
-                new ProductMaster {Name = "Ebay China" , SDescription = "Online cheap Mall" , Website = "www.ebay.ca",IsMultipleCategory = false},
+                new ProductMaster {Name = "Amazon US", SDescription = "Online MAll", Website = "www.amazon.ca", IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100) },
+                new ProductMaster {Name = "Ebay China" , SDescription = "Online cheap Mall" , Website = "www.ebay.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Grocessary store" sub category
-                new ProductMaster {Name = "Almizan" , SDescription = "Arabic grocessary store" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "Supermarche PA" , SDescription = "General grocessary store specialised for fruits" , Website = "http://www.supermarchepa.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Marche Jolee" , SDescription = "Grocessary store, bit expensive than others" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "Ecollegrey" , SDescription = "Grocessary store, very affordable prices" , Website = "http://www.ecollegey.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Sami Fruits" , SDescription = "General grocessary stores specialised for fruits" , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "Almizan" , SDescription = "Arabic grocessary store" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Supermarche PA" , SDescription = "General grocessary store specialised for fruits" , Website = "http://www.supermarchepa.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Marche Jolee" , SDescription = "Grocessary store, bit expensive than others" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Ecollegrey" , SDescription = "Grocessary store, very affordable prices" , Website = "http://www.ecollegey.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Sami Fruits" , SDescription = "General grocessary stores specialised for fruits" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
                 
                 //Products for "Convenient Stores" sub category
-                new ProductMaster {Name = "Beau Soir" , SDescription = "Small number of stores in the city" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "Couche-Tard" , SDescription = "Very nice store but little bit costly." , Website = "http://www.couche-tard.com/index.html",IsMultipleCategory = false},
-                new ProductMaster {Name = "Depanneur" , SDescription = "Very good store and you can find good deal here." , Website = "http://www.ultramarcst.ca",IsMultipleCategory = false},
-                new ProductMaster {Name = "Monoprix" , SDescription = "Nice store but more constly." , Website = "https://www.monoprix.fr/",IsMultipleCategory = false},
-                new ProductMaster {Name = "March� Cosmopolitain" , SDescription = "Very few number of stores." , Website = "",IsMultipleCategory = false},
+                new ProductMaster {Name = "Beau Soir" , SDescription = "Small number of stores in the city" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Couche-Tard" , SDescription = "Very nice store but little bit costly." , Website = "http://www.couche-tard.com/index.html",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Depanneur" , SDescription = "Very good store and you can find good deal here." , Website = "http://www.ultramarcst.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Monoprix" , SDescription = "Nice store but more constly." , Website = "https://www.monoprix.fr/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Marché Cosmopolitain" , SDescription = "Very few number of stores." , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
                 
                 //Products for "Pharmacies" sub category
-                new ProductMaster {Name = "Jean Coutu" , SDescription = "Big pharmacy store with very good deals available." , Website = "https://www.jeancoutu.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Pharmaprix" , SDescription = "Big pharmacy store with very good deals available." , Website = "http://www1.pharmaprix.ca/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Uniprix" , SDescription = "Good pharmacy store but little bit costly." , Website = "http://www.uniprix.com/en/homepage",IsMultipleCategory = false},
-                new ProductMaster {Name = "Pharmacie Linda Frayne & John Genova" , SDescription = "Small pharmacy store, main important items are available." , Website = "http://www.pharmafrayne.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Jean Coutu" , SDescription = "Big pharmacy store with very good deals available." , Website = "https://www.jeancoutu.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Pharmaprix" , SDescription = "Big pharmacy store with very good deals available." , Website = "http://www1.pharmaprix.ca/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Uniprix" , SDescription = "Good pharmacy store but little bit costly." , Website = "http://www.uniprix.com/en/homepage",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Pharmacie Linda Frayne & John Genova" , SDescription = "Small pharmacy store, main important items are available." , Website = "http://www.pharmafrayne.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
                 
                 //Products for "Clothes" sub category
-                new ProductMaster {Name = "Holister" , SDescription = "Famous brand, varity of cloths on average price." , Website = "http://www.hollisterco.ca",IsMultipleCategory = false},
-                new ProductMaster {Name = "A & F" , SDescription = "Cloths for Men, Women and Kids. Its little bit costly." , Website = "http://www.abercrombie.ca",IsMultipleCategory = false},
-                new ProductMaster {Name = "American Eagle" , SDescription = "Famous store in North america with variety of cloths availabe online and in store." , Website = "http://www.ae.com/web/canada/index.jsp",IsMultipleCategory = false},
-                new ProductMaster {Name = "Simons" , SDescription = "Stores available in many cities in North America. average price clothes are available here." , Website = "http://www.simons.ca/simons/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Levis" , SDescription = "Famous brand for clothes. Awesome Jeans and Suits availbe in big price." , Website = "http://www.levi.ca/canada/en/default.asp",IsMultipleCategory = false},
+                new ProductMaster {Name = "Holister" , SDescription = "Famous brand, varity of cloths on average price." , Website = "http://www.hollisterco.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "A & F" , SDescription = "Cloths for Men, Women and Kids. Its little bit costly." , Website = "http://www.abercrombie.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "American Eagle" , SDescription = "Famous store in North america with variety of cloths availabe online and in store." , Website = "http://www.ae.com/web/canada/index.jsp",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Simons" , SDescription = "Stores available in many cities in North America. average price clothes are available here." , Website = "http://www.simons.ca/simons/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Levis" , SDescription = "Famous brand for clothes. Awesome Jeans and Suits availbe in big price." , Website = "http://www.levi.ca/canada/en/default.asp",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Electornics" sub category
-                new ProductMaster {Name = "Dell" , SDescription = "Well known company for Laptops and Copmputers." , Website = "http://www.dell.com/en-ca/",IsMultipleCategory = false},
-                new ProductMaster {Name = "LG" , SDescription = "Famous brand for Mobile and Tablets." , Website = "http://www.lg.com/ca_en",IsMultipleCategory = false},
-                new ProductMaster {Name = "Samsung" , SDescription = "Highly selling Mobile company in North America." , Website = "http://www.samsung.com/ca/home/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Nikon" , SDescription = "Mainly famous for Cameras and small stuff." , Website = "http://www.nikon.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Lenovo" , SDescription = "Known for laptops and now a days in mobiles as well." , Website = "http://www.lenovo.com/ca/en/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Dell" , SDescription = "Well known company for Laptops and Copmputers." , Website = "http://www.dell.com/en-ca/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "LG" , SDescription = "Famous brand for Mobile and Tablets." , Website = "http://www.lg.com/ca_en",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Samsung" , SDescription = "Highly selling Mobile company in North America." , Website = "http://www.samsung.com/ca/home/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Nikon" , SDescription = "Mainly famous for Cameras and small stuff." , Website = "http://www.nikon.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Lenovo" , SDescription = "Known for laptops and now a days in mobiles as well." , Website = "http://www.lenovo.com/ca/en/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Health Care" sub category
-                new ProductMaster {Name = "Axe" , SDescription = "Best Men's Products in great prices." , Website = "http://www.axe.ca/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Dove" , SDescription = "Famous for various products for health care." , Website = "http://www.dove.ca/en/default.aspx",IsMultipleCategory = false},
-                new ProductMaster {Name = "Aveno" , SDescription = "Fmouse for bath products." , Website = "http://www.avino.com/s/Home.asp",IsMultipleCategory = false},
-                new ProductMaster {Name = "Old Spice" , SDescription = "Most famous brand for Men." , Website = "http://oldspice.com/en",IsMultipleCategory = false},
-                new ProductMaster {Name = "Nevia" , SDescription = "Verity of Products for health care." , Website = "http://www.nivea.ca",IsMultipleCategory = false},
+                new ProductMaster {Name = "Axe" , SDescription = "Best Men's Products in great prices." , Website = "http://www.axe.ca/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Dove" , SDescription = "Famous for various products for health care." , Website = "http://www.dove.ca/en/default.aspx",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Aveno" , SDescription = "Fmouse for bath products." , Website = "http://www.avino.com/s/Home.asp",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Old Spice" , SDescription = "Most famous brand for Men." , Website = "http://oldspice.com/en",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Nevia" , SDescription = "Verity of Products for health care." , Website = "http://www.nivea.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Social Network" sub category
-                new ProductMaster {Name = "Facebook" , SDescription = "" , Website = "https://www.facebook.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Twitter" , SDescription = "" , Website = "https://twitter.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Pinterest" , SDescription = "" , Website = "https://www.pinterest.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Google" , SDescription = "" , Website = "https://plus.google.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Instagram" , SDescription = "" , Website = "https://www.instagram.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Facebook" , SDescription = "" , Website = "https://www.facebook.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Twitter" , SDescription = "" , Website = "https://twitter.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Pinterest" , SDescription = "" , Website = "https://www.pinterest.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Google" , SDescription = "" , Website = "https://plus.google.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Instagram" , SDescription = "" , Website = "https://www.instagram.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
             
                 //Products for "E-Commerce" sub category
-                new ProductMaster {Name = "Amazon" , SDescription = "" , Website = "http://www.amazon.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Ebay" , SDescription = "" , Website = "http://www.ebay.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Think Geek" , SDescription = "" , Website = "http://www.thinkgeek.com/i",IsMultipleCategory = false},
-                new ProductMaster {Name = "Ali Express" , SDescription = "" , Website = "http://www.aliexpress.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Amazon" , SDescription = "" , Website = "http://www.amazon.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Ebay" , SDescription = "" , Website = "http://www.ebay.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Think Geek" , SDescription = "" , Website = "http://www.thinkgeek.com/i",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Ali Express" , SDescription = "" , Website = "http://www.aliexpress.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Financial/Banks" sub category
-                new ProductMaster {Name = "TD" , SDescription = "" , Website = "https://www.tdcanadatrust.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Scotia Bank" , SDescription = "" , Website = "http://www.scotiabank.com",IsMultipleCategory = false},
-                new ProductMaster {Name = "RBC" , SDescription = "" , Website = "http://www.rbcroyalbank.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "BMO" , SDescription = "" , Website = "https://www.bmo.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "CIBC" , SDescription = "" , Website = "https://www.cibc.com",IsMultipleCategory = false},
+                new ProductMaster {Name = "TD" , SDescription = "" , Website = "https://www.tdcanadatrust.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Scotia Bank" , SDescription = "" , Website = "http://www.scotiabank.com",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "RBC" , SDescription = "" , Website = "http://www.rbcroyalbank.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "BMO" , SDescription = "" , Website = "https://www.bmo.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "CIBC" , SDescription = "" , Website = "https://www.cibc.com",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Job Hunting" sub category
-                new ProductMaster {Name = "Monster" , SDescription = "" , Website = "www.monster.ca",IsMultipleCategory = false},
-                new ProductMaster {Name = "LinkedIn" , SDescription = "" , Website = "linkedin.com",IsMultipleCategory = false},
-                new ProductMaster {Name = "Indeed" , SDescription = "" , Website = "ca.indeed.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Wokopolis" , SDescription = "" , Website = "www.workopolis.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Job Bank" , SDescription = "" , Website = "www.jobbank.gc.ca/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Monster" , SDescription = "" , Website = "www.monster.ca",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "LinkedIn" , SDescription = "" , Website = "linkedin.com",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Indeed" , SDescription = "" , Website = "ca.indeed.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Wokopolis" , SDescription = "" , Website = "www.workopolis.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Job Bank" , SDescription = "" , Website = "www.jobbank.gc.ca/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Video Streaming" sub category
-                new ProductMaster {Name = "YouTube" , SDescription = "Most popular video streaming website" , Website = "https://www.youtube.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Netflix" , SDescription = "Largest collection of movies and TV shows" , Website = "http://www.netflix.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Hulu" , SDescription = "Video streaming website" , Website = "http://www.hulu.com/welcome",IsMultipleCategory = false},
-                new ProductMaster {Name = "Dailymotion" , SDescription = "One of the first video streaming site" , Website = "http://www.dailymotion.com/ca-en",IsMultipleCategory = false},
-                new ProductMaster {Name = "Vevo" , SDescription = "Video streaming site" , Website = "http://www.vevo.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "YouTube" , SDescription = "Most popular video streaming website" , Website = "https://www.youtube.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Netflix" , SDescription = "Largest collection of movies and TV shows" , Website = "http://www.netflix.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Hulu" , SDescription = "Video streaming website" , Website = "http://www.hulu.com/welcome",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Dailymotion" , SDescription = "One of the first video streaming site" , Website = "http://www.dailymotion.com/ca-en",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Vevo" , SDescription = "Video streaming site" , Website = "http://www.vevo.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Secutiry Software" sub category
-                new ProductMaster {Name = "Avira" , SDescription = "" , Website = "https://www.avira.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Ad-Aware" , SDescription = "" , Website = "http://lavasoft.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Avast" , SDescription = "" , Website = "https://www.avast.com/index",IsMultipleCategory = false},
-                new ProductMaster {Name = "Karspersky" , SDescription = "" , Website = "http://www.kaspersky.ca/",IsMultipleCategory = false},
-                new ProductMaster {Name = "AVG" , SDescription = "" , Website = "http://www.avg.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Avira" , SDescription = "" , Website = "https://www.avira.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Ad-Aware" , SDescription = "" , Website = "http://lavasoft.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Avast" , SDescription = "" , Website = "https://www.avast.com/index",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Karspersky" , SDescription = "" , Website = "http://www.kaspersky.ca/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "AVG" , SDescription = "" , Website = "http://www.avg.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Productive Tools" sub category
-                new ProductMaster {Name = "Jira" , SDescription = "" , Website = "",IsMultipleCategory = false},
-                new ProductMaster {Name = "Evernote" , SDescription = "Free edition for everyone" , Website = "https://evernote.com/?var=1",IsMultipleCategory = false},
-                new ProductMaster {Name = "ODesk" , SDescription = "Busineess helper." , Website = "https://www.upwork.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Freed Camp" , SDescription = "This tool is for everyone with many features." , Website = "https://freedcamp.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Pocket" , SDescription = "Famous application in North America." , Website = "https://getpocket.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Jira" , SDescription = "" , Website = "",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Evernote" , SDescription = "Free edition for everyone" , Website = "https://evernote.com/?var=1",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "ODesk" , SDescription = "Busineess helper." , Website = "https://www.upwork.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Freed Camp" , SDescription = "This tool is for everyone with many features." , Website = "https://freedcamp.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Pocket" , SDescription = "Famous application in North America." , Website = "https://getpocket.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Developement Tools" sub category
-                new ProductMaster {Name = "Eclipse" , SDescription = "Open source tools for Java based applications." , Website = "https://netbeans.org/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Netbeans" , SDescription = "IDE for Java and Php applications." , Website = "http://www.eclipse.org/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Visual Studio" , SDescription = "IDE for .net applications." , Website = "https://www.visualstudio.com",IsMultipleCategory = false},
-                new ProductMaster {Name = "Komodo Edit" , SDescription = "IDE for open source Extension developement." , Website = "http://komodoide.com/komodo-edit/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Code::Blocks" , SDescription = "I even dont know what it is." , Website = "http://codeblocks.org/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Eclipse" , SDescription = "Open source tools for Java based applications." , Website = "https://netbeans.org/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Netbeans" , SDescription = "IDE for Java and Php applications." , Website = "http://www.eclipse.org/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Visual Studio" , SDescription = "IDE for .net applications." , Website = "https://www.visualstudio.com",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Komodo Edit" , SDescription = "IDE for open source Extension developement." , Website = "http://komodoide.com/komodo-edit/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Code::Blocks" , SDescription = "I even dont know what it is." , Website = "http://codeblocks.org/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Communication Tools" sub category
-                new ProductMaster {Name = "Skype" , SDescription = "Famous for business." , Website = "https://slack.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Slake" , SDescription = "New start up and famous for developer." , Website = "http://www.skype.com/en/",IsMultipleCategory = false},
-                new ProductMaster {Name = "HipChat" , SDescription = "New Start up." , Website = "https://www.hipchat.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Discord" , SDescription = "NOt as good as skype." , Website = "https://discordapp.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Glip" , SDescription = "Mainly famous in North America." , Website = "https://glip.com/",IsMultipleCategory = false},
+                new ProductMaster {Name = "Skype" , SDescription = "Famous for business." , Website = "https://slack.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Slake" , SDescription = "New start up and famous for developer." , Website = "http://www.skype.com/en/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "HipChat" , SDescription = "New Start up." , Website = "https://www.hipchat.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Discord" , SDescription = "NOt as good as skype." , Website = "https://discordapp.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Glip" , SDescription = "Mainly famous in North America." , Website = "https://glip.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
 
                 //Products for "Games" sub category
-                new ProductMaster {Name = "Call of Duty" , SDescription = "Action game." , Website = "https://www.callofduty.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "FIFA" , SDescription = "Soccer game." , Website = "http://www.fifa.com/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Counter Strike" , SDescription = "Best action team game." , Website = "http://blog.counter-strike.net/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Splace Invaders" , SDescription = "New Game" , Website = "http://www.space-invaders.com/home/",IsMultipleCategory = false},
-                new ProductMaster {Name = "Spidare Solitare" , SDescription = "Card Game" , Website = "http://www.free-spider-solitaire.com/",IsMultipleCategory = false}
+                new ProductMaster {Name = "Call of Duty" , SDescription = "Action game." , Website = "https://www.callofduty.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "FIFA" , SDescription = "Soccer game." , Website = "http://www.fifa.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Counter Strike" , SDescription = "Best action team game." , Website = "http://blog.counter-strike.net/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Splace Invaders" , SDescription = "New Game" , Website = "http://www.space-invaders.com/home/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)},
+                new ProductMaster {Name = "Spidare Solitare" , SDescription = "Card Game" , Website = "http://www.free-spider-solitaire.com/",IsMultipleCategory = false , Views = RandomNumberGenerator.GetRandomNumber(80,100)}
             };
             // products.ForEach(p => context.ProductMasters.Add(p));
             products.ForEach(s => context.ProductMasters.AddOrUpdate(p => p.Name, s));

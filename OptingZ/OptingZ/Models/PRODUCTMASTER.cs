@@ -12,6 +12,7 @@ namespace OptingZ.Models
         public string SDescription { get; set; }
         public bool IsMultipleCategory { get; set; }
         public string Website { get; set; }
+        public int Views { get; set; }
 
         public virtual ICollection<ProductCategoryMaster> ProductCategorises { get; set; }
         public virtual ICollection<ProductLocationMaster> ProductLocations { get; set; }

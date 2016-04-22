@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201604092052392_AddUserRoleAccess.Designer.cs">
       <DependentUpon>201604092052392_AddUserRoleAccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604220206228_AddViewsProdMaster.cs" />
+    <Compile Include="Migrations\201604220206228_AddViewsProdMaster.Designer.cs">
+      <DependentUpon>201604220206228_AddViewsProdMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryMaster.cs" />
     <Compile Include="Models\CityMaster.cs" />
@@ -247,6 +251,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DAL\Repository\Repository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\RandomNumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -360,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604092052392_AddUserRoleAccess.resx">
       <DependentUpon>201604092052392_AddUserRoleAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604220206228_AddViewsProdMaster.resx">
+      <DependentUpon>201604220206228_AddViewsProdMaster.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

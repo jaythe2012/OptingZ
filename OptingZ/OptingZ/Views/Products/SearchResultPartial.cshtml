@@ -8,7 +8,7 @@
                 <div class="col-xs-4 col-md-2 thumbnail" style="margin:0px 10px 0px 0px;">
                     <img src="https://lh3.googleusercontent.com/-mzaOidqc2g0/AAAAAAAAAAI/AAAAAAAAAF4/ilvw0c_UA-w/s120-c/photo.jpg" alt="...">
                 </div>
-                <span class="badge">Views 14</span>
+                <span class="badge" >@Html.DisplayFor(modelItem => item.Views)</span>
                 <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.Name)</h4>
                 <p class="list-group-item-text">@Html.DisplayFor(modelItem => item.SDescription)</p>
                 <a href="@item.Website">@Html.DisplayFor(modelItem => item.Website)</a>
