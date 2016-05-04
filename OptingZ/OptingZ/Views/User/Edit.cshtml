@@ -11,15 +11,16 @@
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
     <script type="text/javascript">
-        $(document).ready(
-            function () {
-                $('.datepicker').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    minDate: "-99Y",
-                    dateFormat: "dd/mm/yyyy"
+        $(document).ready(function () {
+            $('.ui-datepicker').each(function (i, v) {
+                $(v).datepicker({
+                    dateFormat: 'dd-M-yy',
+                    buttonImage: '@Url.Content("~/Content/calendar.gif")',
+                    buttonImageOnly: true,
+                    showOn: "button"
                 });
             });
+        });
     </script>
 </head>
 <body>
@@ -88,8 +89,16 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.UserDetailMaster.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserDetailMaster.BirthDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                    @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.UserDetailMaster.BirthDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                        @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate, "", new { @class = "text-danger" })*@
+                    @Html.TextBoxFor(model => model.UserDetailMaster.BirthDate, new
+                   {
+                       @class = "ui-datepicker",
+                       @readonly = "readonly",
+                       @style = "display:block;float:left",
+                       placeholder = "Birthdate"
+                   })
+                    @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate)
                 </div>
             </div>
 
