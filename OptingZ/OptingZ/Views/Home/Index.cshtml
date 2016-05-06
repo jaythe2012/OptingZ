@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/jqueryui")
-@Styles.Render("~/Content/themes/base/css")
 
 <div class="jumbotron">
     <h1>OptingZ</h1>
@@ -24,14 +18,6 @@
 </div>
 
 <div id="Content" class="row">@{Html.RenderAction("SearchResultPartial", "Products");}</div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-@Styles.Render("~/Content/themes/base/core.css")
-@Styles.Render("~/Content/themes/base/autocomplete.css")
-@Styles.Render("~/Content/themes/base/datepicker.css")
-@Styles.Render("~/Content/themes/base/jquery-ui.css")
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -49,129 +35,17 @@
         }
 
     });
+    $("#pName").autocomplete({
+        source: "/Home/AutoCompleteProduct",
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#pName").val(ui.item.label);
 
-</script>
-
-@*working super duper*@
-<script type="text/javascript">
-     $("#pName").autocomplete({
-         source: "/Home/AutoCompleteProduct",
-         select: function(event, ui) {
-         event.preventDefault();
-         $("#pName").val(ui.item.label);
-       
-     },
-     focus: function(event, ui) {
-         event.preventDefault();
-         $("#pName").val(ui.item.label);
-     }
-
-     })
-    </script> 
-
-@*<script type="text/javascript">
-
-    $(function () {
-        var getData = function (request, response) {
-            $.getJSON(
-                "/Home/AutoCompleteProduct/?term=" + request.term,
-                function (data) {
-                    response(data);
-                });
+        },
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#pName").val(ui.item.label);
         }
 
-        var selectItem = function (event, ui) {
-            $("#pName").val(ui.item.value);
-            return false;
-        }
-
-        $("#pName").autocomplete({
-            source: getData,
-            select: selectItem,
-            minLength: 4,
-            change: function () {
-                $("#pName").val("").css("display", 2);
-            }
-        })
     })
-
-
-        //$("#pName").autocomplete({
-        //    source: function(request, response) {
-        //        $.ajax({
-        //            url: "/Home/AutoCompleteProduct?term=" +request.term,
-        //            dataType: "json",
-        //            type: "POST",
-        //            contentType: "application/json; charset=utf-8",
-        //            success: function (data) {
-        //                response($.map(data.d, function (item) {
-        //                    return {
-        //                        value: item.Name
-        //                    }
-        //                }))
-        //            },
-        //            error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //                alert(textStatus);
-        //            }
-        //        });
-        //    }
-        //})
-    
-</script>*@ 
-
-@*<script>
-
-    function AutoCompleteA() {
-        $("#pName").autocomplete({
-            maxResults: 10,
-            source: function (request, response) {
-                var searchStr = pName.val();
-                var autocompleteUrl = "/Home/AutoCompleteProduct?term=" + request.term;
-                $.ajax({
-                    url: autocompleteUrl,
-                    type: 'GET',
-                    cache: false,
-                    dataType: 'json',
-                    success: function (json) {
-                        var arr = [];
-                        arr.push(json);
-                        var bing_results = $.map(json[1], function (item) {
-                            return {
-                                label: item,
-                                value: item
-                            };
-                        })
-                        response(bing_results.slice(0, 5));
-
-                    },
-                    error: function (xmlHttpRequest, textStatus, errorThrown) {
-                        console.log('some error occured', textStatus, errorThrown);
-                    }
-                });
-            },
-            select: function (event, ui) {
-                pName.val(ui.item.label);
-                PerformSearchWithoutRedirection();
-                return false;
-            },
-            open: function (event, ui) {
-                var search_SRA = $("#SRA");
-                $('.ui-state-disabled').removeClass('ui-menu-item');
-                $(".ui-autocomplete").position({
-                    my: "left top",
-                    at: "left top",
-                    of: search_SRA,
-                    collision: "fit fit"
-                });
-            }
-
-        }).data("ui-autocomplete")._renderItem = function (ul, item) {
-            return $('<li style="padding-left:0px;">')
-                    .data('item.autocomplete', item.label)
-                    .append("<a style='color:#cccccc;text-decoration:none;width:576px;padding: 0; height: 32px;' id='child##" + item.label + "' class='' tabindex='-1'><div style='background:transparent; padding:1px 3px;'>" + item.label + "</div></a>")
-                    .appendTo(ul);
-        }
-    }
-
-
-</script>*@
+</script>
