@@ -14,11 +14,21 @@
         $(document).ready(function () {
             $('.ui-datepicker').each(function (i, v) {
                 $(v).datepicker({
-                    dateFormat: 'dd-M-yy',
-                    buttonImage: '@Url.Content("~/Content/calendar.gif")',
+                    dateFormat: 'dd-MM-yy',
+                    buttonImage: '@Url.Content("~/Content/calendar-icon.png")',
                     buttonImageOnly: true,
                     showOn: "button"
                 });
+            });
+        });
+        $(function () {
+            $('img[data-src-error]').error(function () {
+                var o = $(this);
+                var errorSrc = o.attr('data-src-error');
+
+                if (o.attr('src') != errorSrc) {
+                    o.attr('src', errorSrc);
+                }
             });
         });
     </script>
@@ -29,7 +39,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>UserMaster</h4>
+            <h4>Profile</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.ID)
@@ -61,7 +71,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control", @type="password", @readonly = "readonly"}})
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -73,11 +83,21 @@
                     <div class="form-group">
                         <span class="control-label col-md-2"><strong>Current Picture</strong></span>
                         <div class="col-md-10">
-                            <img src="~/UserFileMaster?id=@Model.UserFiles.ID" alt="image" />
+                            <img src="~/UserFileMaster?id=@Model.UserFiles.ID" 
+                                style="width: 80px; height: 80px;" alt="image" />
                         </div>
                     </div>
                 }
-
+            }
+            else
+            {
+                <div class="form-group">
+                    <span class="control-label col-md-2"><strong>Current Picture</strong></span>
+                    <div class="col-md-10">
+                        <img src="~/Content/User_Profile_Avatar.png"
+                             style="width: 80px; height: 80px;" alt="image" />
+                    </div>
+                </div>
             }
             <div class="form-group">
                 @Html.Label("Pic", new { @class = "control-label col-md-2" })
@@ -91,13 +111,11 @@
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.UserDetailMaster.BirthDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
                         @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate, "", new { @class = "text-danger" })*@
-                    @Html.TextBoxFor(model => model.UserDetailMaster.BirthDate, new
-                   {
-                       @class = "ui-datepicker",
-                       @readonly = "readonly",
-                       @style = "display:block;float:left",
-                       placeholder = "Birthdate"
-                   })
+                    @Html.TextBoxFor(model => model.UserDetailMaster.BirthDate, new {
+                           @class = "ui-datepicker form-control",
+                           @style = "display:block;float:left;background-color:White",
+                           @placeholder = "Birthdate"
+                    })
                     @Html.ValidationMessageFor(model => model.UserDetailMaster.BirthDate)
                 </div>
             </div>
@@ -113,28 +131,31 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.UserDetailMaster.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserDetailMaster.Sex, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserDetailMaster.Sex, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.UserDetailMaster.Sex,
+                       new SelectList(new List<Object>{
+                       new { value = "Select" , text = "--Select--"  },
+                       new { value = "Male" , text = "Male" },
+                       new { value = "Female" , text = "Female"}
+                       }, "value", "text", 1), new { @class = "form-control" })
+                      
+                     @Html.ValidationMessageFor(model => model.UserDetailMaster.Sex, "",
+                       new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Select
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li>Male</li>
-                    <li>Female</li>
-                </ul>
-            </div>
-
             <div class="form-group">
-                @Html.LabelFor(model => model.UserDetailMaster.IsSubscribedByEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.UserDetailMaster.IsSubscribedByEmail, 
+                        htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.UserDetailMaster.IsSubscribedByEmail)
-                        @Html.ValidationMessageFor(model => model.UserDetailMaster.IsSubscribedByEmail, "", new { @class = "text-danger" })
+                    <div class="checkbox" style="margin-left:20px">
+                        @Html.EditorFor(model => model.UserDetailMaster.IsSubscribedByEmail,
+                                new
+                                {
+                                    @class = "span11",
+                                    @style="margin-left:50px"
+                                })
+                        @Html.ValidationMessageFor(model => model.UserDetailMaster.IsSubscribedByEmail, "", 
+                            new { @class = "text-danger" })
                     </div>
                 </div>
             </div>

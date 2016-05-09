@@ -29,7 +29,7 @@ namespace OptingZ.Controllers
 
         public UserController()
         {
-           
+
         }
 
         // GET: User
@@ -84,10 +84,10 @@ namespace OptingZ.Controllers
                     await SignInAsync(user, isPersistent: false);
                 }
 
-                    #endregion
+                #endregion
 
 
-             }
+            }
 
 
             return RedirectToAction("Index", "Home");
@@ -120,7 +120,7 @@ namespace OptingZ.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //UserMaster userMaster = db.UserMasters.Include(u => u.UserFiles).SingleOrDefault(u => u.ID == id);
-            UserMaster userMaster = uow.UserRepository.Get(filter: u =>u.ID == id,
+            UserMaster userMaster = uow.UserRepository.Get(filter: u => u.ID == id,
                 includeProperties: "UserFiles").SingleOrDefault();
             if (userMaster == null)
             {
@@ -162,7 +162,7 @@ namespace OptingZ.Controllers
                    includeProperties: "UserDetailMaster,UserFiles"
                    ).SingleOrDefault();
 
-          
+
             if (ModelState.IsValid)
             {
                 original.LastName = userMaster.LastName;
@@ -202,7 +202,7 @@ namespace OptingZ.Controllers
                 original.UserRoleMasterID = 1;
                 uow.UserRepository.Update(original);
                 uow.Save();
-                
+
             }
             //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
             return View(original);
