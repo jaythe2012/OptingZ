@@ -51,6 +51,7 @@
         </tr>
     }
 </table>
+<br />
 Page @(pagedlist.PageCount < pagedlist.PageNumber ? 0 : pagedlist.PageNumber) of @pagedlist.PageCount
 
 @Html.PagedListPager(pagedlist, page => Url.Action("Index",new { page = page}))

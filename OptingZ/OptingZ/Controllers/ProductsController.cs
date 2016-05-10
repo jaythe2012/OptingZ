@@ -19,12 +19,9 @@ namespace OptingZ.Controllers
         public ActionResult Index(int? page)
         {
             IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
-
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(Products.ToPagedList(pageNumber, pageSize));
-
-            //return View(Products);
         }
 
 

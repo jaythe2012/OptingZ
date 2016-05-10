@@ -11,6 +11,7 @@ using OptingZ.Models;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
+using PagedList;
 
 namespace OptingZ.Controllers
 {
@@ -33,10 +34,15 @@ namespace OptingZ.Controllers
         }
 
         // GET: User
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             //var userMasters = db.UserMasters.Include(u => u.UserRoleMaster);
             var userMasters = uow.UserRepository.GetAll();
+            int pageSize = 1;
+            int pageNumber = (page ?? 1);
+            return View(userMasters.ToPagedList(pageNumber, pageSize));
+
+
             return View(userMasters.ToList());
         }
 

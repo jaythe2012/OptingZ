@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<OptingZ.Models.UserMaster>
-
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var pagedlist = (PagedList.IPagedList)Model;
 }
 
 <!DOCTYPE html>
@@ -61,5 +63,12 @@
     }
     
     </table>
+
+    <br />
+    Page @(pagedlist.PageCount < pagedlist.PageNumber ? 0 : pagedlist.PageNumber) of @pagedlist.PageCount
+
+    @Html.PagedListPager(pagedlist, page => Url.Action("Index", new { page = page }))
+
+
 </body>
 </html>
