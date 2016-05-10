@@ -14,7 +14,8 @@
         $(document).ready(function () {
             $('.ui-datepicker').each(function (i, v) {
                 $(v).datepicker({
-                    dateFormat: 'dd-MM-yy',
+                    dateFormat: 'mm-dd-yy',
+                    altFormat:"yyyy-mm-dd",
                     buttonImage: '@Url.Content("~/Content/calendar-icon.png")',
                     buttonImageOnly: true,
                     showOn: "button"
@@ -169,7 +170,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to Home", "Index","Home")
     </div>
 </body>
 </html>
