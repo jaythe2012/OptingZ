@@ -85,9 +85,7 @@ namespace OptingZ.Controllers
                 }
 
                 #endregion
-
-
-            }
+   }
 
 
             return RedirectToAction("Index", "Home");

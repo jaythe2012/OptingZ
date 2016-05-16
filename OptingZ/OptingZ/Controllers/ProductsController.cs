@@ -23,35 +23,6 @@ namespace OptingZ.Controllers
         }
 
 
-        public PartialViewResult SearchResultPartial(string pName)
-        {
-            if (!String.IsNullOrEmpty(pName))
-            {
-
-                pName = WebUtility.UrlDecode(pName);
-                ProductMaster prod = uow.ProductRepository.Get(
-                    filter: d => d.Name == pName,
-                    includeProperties: "ProductCategorises"
-                   ).First();
-                    IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
-                    List<int> ProductIDs = new List<int>();
-                    foreach (ProductCategoryMaster pcm in pcms)
-                    {
-                        List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
-                            pcm.SubCategoryMasterID
-                            );
-                        ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
-                    }
-                    List<ProductMaster> Products = new List<ProductMaster>();
-                    foreach (int id in ProductIDs)
-                    {
-                        if (id != prod.ID)
-                            Products.Add(uow.ProductRepository.GetByID(id));
-                    }
-                    return PartialView(Products); 
-                }
-            return null;
-        }
 
         [HttpGet]
         //Get : Products/Alternative
@@ -212,6 +183,37 @@ namespace OptingZ.Controllers
             
             var test = Json(result, JsonRequestBehavior.AllowGet);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult SearchResultPartial(int? pid)
+        {
+            if (pid > 0)
+            {
+
+               // pName = WebUtility.UrlDecode(pName);
+                ProductMaster prod = uow.ProductRepository.Get(
+                    filter: d => d.ID == pid,
+                    includeProperties: "ProductCategorises"
+                   ).First();
+                IEnumerable<ProductCategoryMaster> pcms = prod.ProductCategorises;
+                List<int> ProductIDs = new List<int>();
+                foreach (ProductCategoryMaster pcm in pcms)
+                {
+                    List<int> products = uow.ProductCategoryRepository.GetProductsBySubCategoryID(
+                        pcm.SubCategoryMasterID
+                        );
+                    ProductIDs.AddRange(products.Where(p => !ProductIDs.Any(pr => pr == p)));
+                }
+                List<ProductMaster> Products = new List<ProductMaster>();
+                foreach (int ids in ProductIDs)
+                {
+                    if (ids != prod.ID)
+                        Products.Add(uow.ProductRepository.GetByID(ids));
+                }
+                //TempData["productName"] = prod.Name;
+                return PartialView(Products);
+            }
+            return null;
         }
 
         protected override void Dispose(bool disposing)

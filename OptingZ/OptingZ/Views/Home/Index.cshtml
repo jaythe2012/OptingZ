@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<OptingZ.Models.ProductMaster>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "";
+    
 }
 
 <div class="jumbotron">
@@ -9,10 +10,9 @@
     <p class="lead" style="font-size:14px">There're always options available for anything you look for. Why not search for all available alternatives and Optingz for one suits you most!!!, Here is the way to find alternatives by OptingZ!!!</p>
     <div class="input-group">
         <form action="/Home/Index" class="navbar-search" id="searchform" method="post">
-            <input type="text" class="form-control" id="pName" name="pName" value="@ViewBag.pName" placeholder="What you need an alternative for?">
-            <span class="input-group-btn col-md-1" style="margin-left:-14px">
-                <input class="btn btn-success" id="btnClick" value="OptItBud!!!" type="submit" />
-            </span>
+             <input type="text" id="pid" name="pid" value="@ViewBag.id" style="visibility : hidden" readonly>
+             <input type="text" class="form-control" id="pName" name="pName" value="@ViewBag.pName"  placeholder="What you need an alternative for?">
+             <input class="btn btn-success pull-right" id="btnClick" value="OptItBud!!!" type="submit" />
         </form>
     </div>
 </div>
@@ -25,7 +25,7 @@
             $(".nav-collapse .nav .active").removeClass("active")
             $(this).parent().addClass("active")
         });
-
+        $("#pName").val(ViewBag.pName);
     });
 
     $('#pName').keypress(function (e) {
@@ -38,12 +38,14 @@
     $("#pName").autocomplete({
         source: "/Home/AutoCompleteProduct",
         select: function (event, ui) {
-            event.preventDefault();
+            //event.defaultPrevented();
             $("#pName").val(ui.item.label);
-
+            $("#pid").val(ui.item.id);
+            $('#searchform').submit();
+            
         },
         focus: function (event, ui) {
-            event.preventDefault();
+            //event.defaultPrevented();
             $("#pName").val(ui.item.label);
         }
 

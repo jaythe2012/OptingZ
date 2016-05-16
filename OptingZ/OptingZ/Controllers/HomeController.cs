@@ -13,6 +13,7 @@ namespace OptingZ.Controllers
         private UnitOfWork uow = new UnitOfWork();
         public ActionResult Index()
         {
+            ViewBag.pName = Request.Form["pName"];
             return View();
         }
 
