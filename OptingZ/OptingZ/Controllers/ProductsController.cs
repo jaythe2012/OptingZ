@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using OptingZ.DAL;
 using OptingZ.Models;
-
+using PagedList;
 namespace OptingZ.Controllers
 {
     public class ProductsController : Controller
@@ -16,10 +16,15 @@ namespace OptingZ.Controllers
         private UnitOfWork uow = new UnitOfWork();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             IEnumerable<ProductMaster> Products = uow.ProductRepository.GetAll();
-            return View(Products);
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(Products.ToPagedList(pageNumber, pageSize));
+
+            //return View(Products);
         }
 
 
