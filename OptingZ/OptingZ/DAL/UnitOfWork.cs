@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OptingZ.DAL.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace OptingZ.DAL
         private UserFileRepository userFileRepository;
         private UserRepository userRepository;
         private UserDetailRepository userDetailRepository;
+        private CategoryRepository categoryRepository;
 
 
         #region Repos
@@ -76,7 +78,17 @@ namespace OptingZ.DAL
                 return userDetailRepository;
             }
         }
-
+        public CategoryRepository CategoryRepository
+        {
+            get
+            {
+                if (this.categoryRepository == null)
+                {
+                    this.categoryRepository = new CategoryRepository(context);
+                }
+                return categoryRepository;
+            }
+        }
         #endregion
 
         public void Save()
