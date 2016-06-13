@@ -213,6 +213,7 @@
     <Compile Include="Controllers\CategoryMastersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\StickerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserFileMasterController.cs" />
     <Compile Include="DAL\OptingzDbContext.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="DAL\Repository\CategoryRepository.cs" />
     <Compile Include="DAL\Repository\ProductCategoryRepository.cs" />
     <Compile Include="DAL\Repository\ProductRepository.cs" />
+    <Compile Include="DAL\Repository\StickerRepository.cs" />
     <Compile Include="DAL\Repository\UserDetailRepository.cs" />
     <Compile Include="DAL\Repository\UserFileRepository.cs" />
     <Compile Include="DAL\Repository\UserRepository.cs" />
@@ -365,6 +367,11 @@
     <Content Include="Views\CategoryMasters\Details.cshtml" />
     <Content Include="Views\CategoryMasters\Edit.cshtml" />
     <Content Include="Views\CategoryMasters\Index.cshtml" />
+    <Content Include="Views\Sticker\Create.cshtml" />
+    <Content Include="Views\Sticker\Delete.cshtml" />
+    <Content Include="Views\Sticker\Details.cshtml" />
+    <Content Include="Views\Sticker\Edit.cshtml" />
+    <Content Include="Views\Sticker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
