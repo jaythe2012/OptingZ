@@ -15,6 +15,7 @@ namespace OptingZ.DAL
         private UserRepository userRepository;
         private UserDetailRepository userDetailRepository;
         private CategoryRepository categoryRepository;
+        private SubCategoryRepository subCategoryRepository;
         private StickerRepository stickerRepository;
 
         #region Repos
@@ -87,6 +88,18 @@ namespace OptingZ.DAL
                     this.categoryRepository = new CategoryRepository(context);
                 }
                 return categoryRepository;
+            }
+        }
+
+        public SubCategoryRepository SubCategoryRepository
+        {
+            get
+            {
+                if (this.subCategoryRepository == null)
+                {
+                    this.subCategoryRepository = new SubCategoryRepository(context);
+                }
+                return subCategoryRepository;
             }
         }
 

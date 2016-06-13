@@ -25,7 +25,6 @@ namespace OptingZ.Controllers
         }
 
 
-
         [HttpGet]
         //Get : Products/Alternative
         public ActionResult Alternative(string pName)
