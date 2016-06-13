@@ -11,107 +11,107 @@ using OptingZ.Models;
 
 namespace OptingZ.Controllers
 {
-    public class CategoryMastersController : Controller
+    public class StickerController : Controller
     {
         private UnitOfWork uow = new UnitOfWork();
 
-        // GET: CategoryMasters
+        // GET: Sticker
         public ActionResult Index()
         {
-            return View(uow.CategoryRepository.GetAll());
+            return View(uow.StickerRepository.GetAll());
         }
 
-        // GET: CategoryMasters/Details/5
+        // GET: Sticker/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryMaster categoryMaster = uow.CategoryRepository.GetByID(id);
-            if (categoryMaster == null)
+            StickerMaster stickerMaster = uow.StickerRepository.GetByID(id);
+            if (stickerMaster == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryMaster);
+            return View(stickerMaster);
         }
 
-        // GET: CategoryMasters/Create
+        // GET: Sticker/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoryMasters/Create
+        // POST: Sticker/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name")] CategoryMaster categoryMaster)
+        public ActionResult Create([Bind(Include = "ID,Name")] StickerMaster stickerMaster)
         {
             if (ModelState.IsValid)
             {
-                uow.CategoryRepository.Add(categoryMaster);
+                uow.StickerRepository.Add(stickerMaster);
                 uow.Save();
                 return RedirectToAction("Index");
             }
 
-            return View(categoryMaster);
+            return View(stickerMaster);
         }
 
-        // GET: CategoryMasters/Edit/5
+        // GET: Sticker/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryMaster categoryMaster = uow.CategoryRepository.GetByID(id);
-            if (categoryMaster == null)
+            StickerMaster stickerMaster = uow.StickerRepository.GetByID(id);
+            if (stickerMaster == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryMaster);
+            return View(stickerMaster);
         }
 
-        // POST: CategoryMasters/Edit/5
+        // POST: Sticker/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name")] CategoryMaster categoryMaster)
+        public ActionResult Edit([Bind(Include = "ID,Name")] StickerMaster stickerMaster)
         {
             if (ModelState.IsValid)
             {
-                uow.CategoryRepository.Update(categoryMaster);
+                uow.StickerRepository.Update(stickerMaster);
                 uow.Save();
                 return RedirectToAction("Index");
             }
-            return View(categoryMaster);
+            return View(stickerMaster);
         }
 
-        // GET: CategoryMasters/Delete/5
+        // GET: Sticker/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryMaster categoryMaster = uow.CategoryRepository.GetByID(id);
-            if (categoryMaster == null)
+            StickerMaster stickerMaster = uow.StickerRepository.GetByID(id);
+            if (stickerMaster == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryMaster);
+            return View(stickerMaster);
         }
 
-        // POST: CategoryMasters/Delete/5
+        // POST: Sticker/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CategoryMaster categoryMaster = uow.CategoryRepository.GetByID(id);
-            uow.CategoryRepository.Delete(categoryMaster);
+            StickerMaster stickerMaster = uow.StickerRepository.GetByID(id);
+            uow.StickerRepository.Delete(stickerMaster);
             uow.Save();
             return RedirectToAction("Index");
         }
