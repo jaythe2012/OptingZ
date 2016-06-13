@@ -15,7 +15,7 @@ namespace OptingZ.DAL
         private UserRepository userRepository;
         private UserDetailRepository userDetailRepository;
         private CategoryRepository categoryRepository;
-        private StickerRepository stickerRepository;
+
 
         #region Repos
 
@@ -23,7 +23,7 @@ namespace OptingZ.DAL
         {
             get
             {
-                if (this.productRepository == null)
+                if(this.productRepository == null)
                 {
                     this.productRepository = new ProductRepository(context);
                 }
@@ -87,18 +87,6 @@ namespace OptingZ.DAL
                     this.categoryRepository = new CategoryRepository(context);
                 }
                 return categoryRepository;
-            }
-        }
-
-        public StickerRepository StickerRepository
-        {
-            get
-            {
-                if (this.stickerRepository == null)
-                {
-                    this.stickerRepository = new StickerRepository(context);
-                }
-                return stickerRepository;
             }
         }
         #endregion
