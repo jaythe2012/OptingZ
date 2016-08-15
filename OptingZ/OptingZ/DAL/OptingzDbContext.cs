@@ -42,7 +42,7 @@ namespace OptingZ.DAL
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         
 
-        modelBuilder.Entity<SubCategoryMaster>()
+            modelBuilder.Entity<SubCategoryMaster>()
                 .HasRequired(c => c.CategoryMaster)
                 .WithMany()
                 .WillCascadeOnDelete(false);

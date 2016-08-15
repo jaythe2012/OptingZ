@@ -4,28 +4,27 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
             <li>
                @Html.ActionLink( User.Identity.Name + "!", "EditByName", "User", new { User.Identity.Name }, htmlAttributes: new { title = "Manage" })
             </li>
             <li>@Html.ActionLink("Sign Out", "SignOut", "User")</li>
-        </ul>
+        
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
+ 
         <li>@Html.ActionLink("Register", "Create", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         @*<li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
 
-        <li style="margin-top:9px">
+        <li>
             <div class="dropdown">
                 <button class="btn btn-link dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
                     Sign In
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="min-width: 315px; ">
-                    <form action="/User/LogIn"  class="form-horizontal" method="post" style="margin: 5px 15px 11px 30px;">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" >
+                    <form action="/User/LogIn"  class="form-horizontal" method="post" >
                         <div class="form-group">
                             <label for="exampleInputEmail1">User Name</label>
                             <input type="text" class="form-control" id="UserName" name="UserName" placeholder="UserName">
@@ -34,7 +33,7 @@ else
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
                         </div>
-                        <div class="checkbox" style="margin-left: -13px; margin-top:-11px;  margin-bottom: 10px">
+                        <div class="checkbox" >
                             <label>
                                 <input type="checkbox" name="RememberMe" value="true" id="RememberMe"> Remember me
                             </label>
@@ -44,5 +43,5 @@ else
                 </ul>
             </div>
         </li>
-    </ul>
+    
 }

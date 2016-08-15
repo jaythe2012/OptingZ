@@ -148,7 +148,7 @@ namespace OptingZ.Controllers
                 return HttpNotFound();
             }
             //ViewBag.UserRoleMasterID = new SelectList(db.UserRoleMasters, "ID", "Name", userMaster.UserRoleMasterID);
-            return RedirectToAction("Edit", "User", userMaster);
+            return RedirectToAction("Edit", "User", new { id= userMaster.ID});
         }
 
         // POST: User/Edit/5
