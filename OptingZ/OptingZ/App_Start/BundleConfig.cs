@@ -34,14 +34,14 @@ namespace OptingZ
                       "~/Content/jquery-ui-1.8.21.custom.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/assets/").Include(
+            bundles.Add(new StyleBundle("~/Content/assets/lib").Include(
               "~/Content/assets/libraries/font-awesome/css/font-awesome.min.css",
               "~/Content/assets/libraries/owl.carousel/assets/owl.carousel.css",
               "~/Content/assets/libraries/colorbox/example1/colorbox.css",
               "~/Content/assets/libraries/bootstrap-select/bootstrap-select.min.css",
               "~/Content/assets/libraries/bootstrap-fileinput/fileinput.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/assets/css").Include(
+            bundles.Add(new StyleBundle("~/Content/assets/csstest").Include(
                  "~/Content/assets/css/superlist.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
