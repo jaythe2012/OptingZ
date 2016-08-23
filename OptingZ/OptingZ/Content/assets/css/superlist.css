@@ -7849,8 +7849,6 @@ h2.widgettitle {
   left: 0px;
   position: absolute;
   right: 0px;
-  transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
 }
   .hero-image-form-wrapper .dropdown-toggle, .hero-image-form-wrapper input {
     background-color: rgba(255, 255, 255, 0.9) !important;
