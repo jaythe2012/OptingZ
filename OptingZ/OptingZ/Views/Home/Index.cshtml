@@ -2,9 +2,7 @@
 
 @{
     ViewBag.Title = "";
-
 }
-
 <div class="main-inner">
     <div class="content">
         <div class="mt-150">
@@ -22,18 +20,19 @@
                         </div>
                         <!-- /.hero-image-content -->
                         <div class="hero-image-form-wrapper" style="right:0px; float:right; top:35%">
-                                <div class="col-sm-4 col-sm-offset-8 col-lg-4 col-lg-offset-6">
-                                    <form method="get" action="?">
-                                        <h2>Start Searching</h2>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for event, hotel, restaurant, job ... ">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-primary btn-block" type="button">Search</button>
-                                            </span>
-                                        </div><!-- /.input-group -->
-                                    </form>
-                                </div>
-                                <!-- /.col-* -->
+                            <div class="col-sm-4 col-sm-offset-8 col-lg-4 col-lg-offset-6">
+                                <form action="/Home/Index" method="post" id="searchform">
+                                    <h2>Start Searching</h2>
+                                    <div class="input-group">
+                                        <input type="hidden" id="pid" name="pid" value="@ViewBag.id" style="height:0px; width:0px" readonly>
+                                        <input type="text" class="form-control" id="pName" name="pName" value="@ViewBag.pName" placeholder="Search for an alternative for... ">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary btn-block" id="btnClick" type="submit">Search</button>
+                                        </span>
+                                    </div><!-- /.input-group -->
+                                </form>
+                            </div>
+                            <!-- /.col-* -->
                         </div>
                         <!-- /.hero-image-form-wrapper -->
                     </div>
@@ -636,6 +635,39 @@
     </div>
     <!-- /.content -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".nav-collapse .nav li a").click(function (e) {
+            $(".nav-collapse .nav .active").removeClass("active")
+            $(this).parent().addClass("active")
+        });
+        $("#pName").val(ViewBag.pName);
+    });
+
+    $('#pName').keypress(function (e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13 && $(this).val() != "") {
+            $('#searchform').submit();
+        }
+
+    });
+    $("#pName").autocomplete({
+        source: "/Home/AutoCompleteProduct",
+        select: function (event, ui) {
+            //event.defaultPrevented();
+            $("#pName").val(ui.item.label);
+            $("#pid").val(ui.item.id);
+            $('#searchform').submit();
+
+        },
+        focus: function (event, ui) {
+            //event.defaultPrevented();
+            $("#pName").val(ui.item.label);
+        }
+    })
+</script>
+
 <!-- /.main-inner -->
 @*<div class="jumbotron">
         <h1>OptingZ</h1>
@@ -680,6 +712,5 @@
                 //event.defaultPrevented();
                 $("#pName").val(ui.item.label);
             }
-
         })
     </script>*@
